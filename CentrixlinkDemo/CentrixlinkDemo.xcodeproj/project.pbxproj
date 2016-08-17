@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A081D6031D5DC89C00864E01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6021D5DC89C00864E01 /* main.m */; };
+		A081D6061D5DC89C00864E01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6051D5DC89C00864E01 /* AppDelegate.m */; };
+		A081D6091D5DC89C00864E01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6081D5DC89C00864E01 /* ViewController.m */; };
+		A081D60C1D5DC89C00864E01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A081D60A1D5DC89C00864E01 /* Main.storyboard */; };
+		A081D60E1D5DC89C00864E01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A081D60D1D5DC89C00864E01 /* Assets.xcassets */; };
+		A081D6111D5DC89C00864E01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A081D60F1D5DC89C00864E01 /* LaunchScreen.storyboard */; };
+		A081D61B1D5DC8BD00864E01 /* Centrixlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D6191D5DC8BD00864E01 /* Centrixlink.framework */; };
+		A081D61D1D61ACD700864E01 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D61C1D61ACD700864E01 /* libz.tbd */; };
+		A081D61F1D61ACE000864E01 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D61E1D61ACE000864E01 /* AVFoundation.framework */; };
+		A081D6251D61ACF100864E01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D6241D61ACF100864E01 /* CoreLocation.framework */; };
+		A081D6271D61ACF600864E01 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D6261D61ACF600864E01 /* AdSupport.framework */; };
+		A081D62B1D61AD1100864E01 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D62A1D61AD1100864E01 /* libstdc++.tbd */; };
+		A081D62D1D61AD7000864E01 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081D62C1D61AD7000864E01 /* MediaPlayer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A081D5FE1D5DC89C00864E01 /* CentrixlinkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CentrixlinkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A081D6021D5DC89C00864E01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A081D6041D5DC89C00864E01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A081D6051D5DC89C00864E01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A081D6071D5DC89C00864E01 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A081D6081D5DC89C00864E01 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A081D60B1D5DC89C00864E01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A081D60D1D5DC89C00864E01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A081D6101D5DC89C00864E01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A081D6121D5DC89C00864E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A081D6191D5DC8BD00864E01 /* Centrixlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Centrixlink.framework; sourceTree = "<group>"; };
+		A081D61C1D61ACD700864E01 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A081D61E1D61ACE000864E01 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A081D6201D61ACE600864E01 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A081D6221D61ACEA00864E01 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A081D6241D61ACF100864E01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A081D6261D61ACF600864E01 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A081D6281D61ACFC00864E01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A081D62A1D61AD1100864E01 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		A081D62C1D61AD7000864E01 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A081D5FB1D5DC89C00864E01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A081D62D1D61AD7000864E01 /* MediaPlayer.framework in Frameworks */,
+				A081D62B1D61AD1100864E01 /* libstdc++.tbd in Frameworks */,
+				A081D6271D61ACF600864E01 /* AdSupport.framework in Frameworks */,
+				A081D6251D61ACF100864E01 /* CoreLocation.framework in Frameworks */,
+				A081D61F1D61ACE000864E01 /* AVFoundation.framework in Frameworks */,
+				A081D61D1D61ACD700864E01 /* libz.tbd in Frameworks */,
+				A081D61B1D5DC8BD00864E01 /* Centrixlink.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A081D5F51D5DC89C00864E01 = {
+			isa = PBXGroup;
+			children = (
+				A081D62C1D61AD7000864E01 /* MediaPlayer.framework */,
+				A081D62A1D61AD1100864E01 /* libstdc++.tbd */,
+				A081D6281D61ACFC00864E01 /* CoreGraphics.framework */,
+				A081D6261D61ACF600864E01 /* AdSupport.framework */,
+				A081D6241D61ACF100864E01 /* CoreLocation.framework */,
+				A081D6221D61ACEA00864E01 /* WebKit.framework */,
+				A081D6201D61ACE600864E01 /* AudioToolbox.framework */,
+				A081D61E1D61ACE000864E01 /* AVFoundation.framework */,
+				A081D61C1D61ACD700864E01 /* libz.tbd */,
+				A081D6001D5DC89C00864E01 /* CentrixlinkDemo */,
+				A081D5FF1D5DC89C00864E01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A081D5FF1D5DC89C00864E01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A081D5FE1D5DC89C00864E01 /* CentrixlinkDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A081D6001D5DC89C00864E01 /* CentrixlinkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				A081D6041D5DC89C00864E01 /* AppDelegate.h */,
+				A081D6051D5DC89C00864E01 /* AppDelegate.m */,
+				A081D6071D5DC89C00864E01 /* ViewController.h */,
+				A081D6081D5DC89C00864E01 /* ViewController.m */,
+				A081D6181D5DC8BD00864E01 /* Centrixlink.embeddedframework */,
+				A081D60A1D5DC89C00864E01 /* Main.storyboard */,
+				A081D60D1D5DC89C00864E01 /* Assets.xcassets */,
+				A081D60F1D5DC89C00864E01 /* LaunchScreen.storyboard */,
+				A081D6121D5DC89C00864E01 /* Info.plist */,
+				A081D6011D5DC89C00864E01 /* Supporting Files */,
+			);
+			path = CentrixlinkDemo;
+			sourceTree = "<group>";
+		};
+		A081D6011D5DC89C00864E01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A081D6021D5DC89C00864E01 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A081D6181D5DC8BD00864E01 /* Centrixlink.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				A081D6191D5DC8BD00864E01 /* Centrixlink.framework */,
+				A081D61A1D5DC8BD00864E01 /* Resources */,
+			);
+			path = Centrixlink.embeddedframework;
+			sourceTree = "<group>";
+		};
+		A081D61A1D5DC8BD00864E01 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A081D5FD1D5DC89C00864E01 /* CentrixlinkDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A081D6151D5DC89C00864E01 /* Build configuration list for PBXNativeTarget "CentrixlinkDemo" */;
+			buildPhases = (
+				A081D5FA1D5DC89C00864E01 /* Sources */,
+				A081D5FB1D5DC89C00864E01 /* Frameworks */,
+				A081D5FC1D5DC89C00864E01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CentrixlinkDemo;
+			productName = CentrixlinkDemo;
+			productReference = A081D5FE1D5DC89C00864E01 /* CentrixlinkDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A081D5F61D5DC89C00864E01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Centrixlink;
+				TargetAttributes = {
+					A081D5FD1D5DC89C00864E01 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = A081D5F91D5DC89C00864E01 /* Build configuration list for PBXProject "CentrixlinkDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A081D5F51D5DC89C00864E01;
+			productRefGroup = A081D5FF1D5DC89C00864E01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A081D5FD1D5DC89C00864E01 /* CentrixlinkDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A081D5FC1D5DC89C00864E01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A081D6111D5DC89C00864E01 /* LaunchScreen.storyboard in Resources */,
+				A081D60E1D5DC89C00864E01 /* Assets.xcassets in Resources */,
+				A081D60C1D5DC89C00864E01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A081D5FA1D5DC89C00864E01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A081D6091D5DC89C00864E01 /* ViewController.m in Sources */,
+				A081D6061D5DC89C00864E01 /* AppDelegate.m in Sources */,
+				A081D6031D5DC89C00864E01 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A081D60A1D5DC89C00864E01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A081D60B1D5DC89C00864E01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A081D60F1D5DC89C00864E01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A081D6101D5DC89C00864E01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A081D6131D5DC89C00864E01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A081D6141D5DC89C00864E01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A081D6161D5DC89C00864E01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CentrixlinkDemo/Centrixlink.embeddedframework",
+				);
+				INFOPLIST_FILE = CentrixlinkDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Centrixlink.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		A081D6171D5DC89C00864E01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CentrixlinkDemo/Centrixlink.embeddedframework",
+				);
+				INFOPLIST_FILE = CentrixlinkDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Centrixlink.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A081D5F91D5DC89C00864E01 /* Build configuration list for PBXProject "CentrixlinkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A081D6131D5DC89C00864E01 /* Debug */,
+				A081D6141D5DC89C00864E01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A081D6151D5DC89C00864E01 /* Build configuration list for PBXNativeTarget "CentrixlinkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A081D6161D5DC89C00864E01 /* Debug */,
+				A081D6171D5DC89C00864E01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A081D5F61D5DC89C00864E01 /* Project object */;
+}
