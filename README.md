@@ -18,6 +18,7 @@ iOS iOS7+ 版本
 ## 准备工作
 1.  从官网下载Centrixlink_iOS_SDK.zip文件;
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework)，并添加到XCode项目中。
+
 ## 添加集成需要的代码
 
 ### 1. 添加头文件 
@@ -44,8 +45,14 @@ iOS iOS7+ 版本
    //开启debug
     [[CentrixlinkAD sharedInstance] setDebugEnable:YES]; 
     //激活SDK
+    NSError *error;
     [[CentrixlinkAD sharedInstance] startWithAppID:@"Your AppID Here" 
-        AppSecretKey:@"Your SecretKey Here" error:nil];
+        AppSecretKey:@"Your SecretKey Here" error:&error];
+        if(error){
+           NSLog(@"start Error %@", error);
+        }else{
+           NSLog(@"start Success");
+        }
 }
 ```
 
