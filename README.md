@@ -56,7 +56,7 @@ iOS iOS7+ 版本
 }
 ```
 
-###  4. 添加如下代码到你要显示广告的ViewController中
+###  4. 添加如下代码到显示广告的ViewController中
 
 #### 4.1 添加代理
 ```objc
