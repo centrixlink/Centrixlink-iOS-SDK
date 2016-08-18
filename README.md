@@ -1,25 +1,35 @@
 # Centrixlink-iOS-SDK
+
 ## 平台支持
-iOS iOS7+ 版本
+iOS7+ 版本
 
-依赖以下库:
- * AdSupport.framework
- * AVFoundation.framework
- * CFNetwork.framework
- * Foundation.framework
- * MediaPlayer.framework
- * libz.dylib
- * Storekit.framework
- * libstdc++.dylib
- * CoreLocation.framework
- * SystemConfiguration.framework
- * UIKit.framework
+#准备工作
 
-## 准备工作
+## Cocoapods
+The Centrixlink iOS SDK can also be installed via Cocoapods. To install the Centrixlink iOS SDK via Cocoapods add the following line to your Podfile and re-run the pod install command:
+
+> pod 'Centrixlink-iOS', '~> 1.0'
+
+## Manual
 1.  从官网下载Centrixlink_iOS_SDK.zip文件;
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework)，并添加到XCode项目中。
+3.  添加以下依赖库:
+ 
+```
+   * AdSupport.framework
+   * AVFoundation.framework
+   * CFNetwork.framework
+   * Foundation.framework
+   * MediaPlayer.framework
+   * libz.dylib
+   * Storekit.framework
+   * libstdc++.dylib
+   * CoreLocation.framework
+   * SystemConfiguration.framework
+   * UIKit.framework
+```
 
-## 添加集成需要的代码
+# 添加集成需要的代码
 
 ### 1. 添加头文件 
 * AppDelegate.h:
@@ -32,8 +42,8 @@ iOS iOS7+ 版本
 ```objc
 - (void)application:(UIApplication *) application 
     handleEventsForBackgroundURLSession:(NSString *)identifier
-		 completionHandler:(void (^)())completionHandler {
- 	[CentrixlinkAD sharedInstance].backgroudCompletionHandler = completionHandler;
+     completionHandler:(void (^)())completionHandler {
+  [CentrixlinkAD sharedInstance].backgroudCompletionHandler = completionHandler;
 }
 ```
 
@@ -61,8 +71,8 @@ iOS iOS7+ 版本
 #### 4.1 添加代理
 ```objc
 - (void)viewDidLoad{
-	//设置代理
-	[[CentrixlinkAD sharedInstance] setDelegate:self];
+  //设置代理
+  [[CentrixlinkAD sharedInstance] setDelegate:self];
   }
 ```
 
@@ -100,15 +110,15 @@ iOS iOS7+ 版本
     
 ```objc
 - (void)ADClick:(id )sender {
-	//当前是否可以显示广告
-	CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
-	NSError *error;
-	if(manager.isShowableAD)
-	{
-             //插屏显示，如全屏显示则NO
-        BOOL isInterstitialShow = YES;
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow]} error:&error];
+    //当前是否可以显示广告
+    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
+    NSError *error;
+    if(manager.isShowableAD)
+    {
+               //插屏显示，如全屏显示则NO
+          BOOL isInterstitialShow = YES;
+          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow]} error:&error];
 
-	}
+    }
   }
 ```
