@@ -1,13 +1,15 @@
 # Centrixlink-iOS-SDK
-## 平台支持
+
+# 平台支持
 iOS iOS7+ 版本
 
-# Cocoapods
+#准备工作
+## Cocoapods
 The Centrixlink iOS SDK can also be installed via Cocoapods. To install the Centrixlink iOS SDK via Cocoapods add the following line to your Podfile and re-run the pod install command:
 
 > pod 'Centrixlink-iOS', '~> 1.0'
 
-# Manual
+## Manual
 1.  从官网下载Centrixlink_iOS_SDK.zip文件;
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework)，并添加到XCode项目中。
 3.  添加以下依赖库:
