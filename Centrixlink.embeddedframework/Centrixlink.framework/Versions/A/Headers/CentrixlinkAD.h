@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "CLSLog.h"
 
 
+NS_ASSUME_NONNULL_BEGIN
+
+@class UIViewController;
 
 extern NSString* ShowADOptionKeyInterstitialAD;
 extern NSString* ShowADOptionKeyOrientations;
@@ -126,7 +128,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @param AppSecretKey 申请的AppSecretkey 字符串
  *  @param error        成功返回nil, 失败返回Error信息
  */
-- (void)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError **)error;
+- (void)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
 
 
 /**
@@ -143,6 +145,8 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (BOOL)isShowableAD;
 
+- (void)flushPreloadList;
+
 /**
  *   播放广告
  *
@@ -152,8 +156,10 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *
  *  @return true 成功播放，false 播放失败
  */
-- (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError **)error;
+- (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
 
+
+-(void)newAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError **)error;
 
 /**
  *  还原Preload数据，清除缓存
@@ -177,3 +183,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 - (void)setDebugBlock:(CentrixLinkADDebugBlock)debugBlock;
 
 @end
+
+
+NS_ASSUME_NONNULL_END
