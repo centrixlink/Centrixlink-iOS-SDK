@@ -1,4 +1,4 @@
-#
+	#
 # Be sure to run `pod lib lint Centrixlink-iOS.podspec' to ensure this is a
 # valid spec before submitting.
 #
@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "Centrixlink-iOS"
-s.version          = "1.0.45"
+s.version          = "1.0.46"
 s.summary          = "Centrixlink's iOS SDK'"
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ s.author           = { "Centrixlink" => "tech-support@Centrixlink.com" }
 s.platform     = :ios, '7.0'
 s.requires_arc = true
 
-s.source           = { :git => "https://github.com/Centrixlink/Centrixlink-iOS-SDK.git", :tag => "1.0.45" }
+s.source           = { :git => "https://github.com/Centrixlink/Centrixlink-iOS-SDK.git", :tag => "1.0.46" }
 s.vendored_frameworks = 'Centrixlink.embeddedframework/Centrixlink.framework'
 s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
