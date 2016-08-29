@@ -27,8 +27,19 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
    * CoreLocation.framework
    * SystemConfiguration.framework
    * UIKit.framework
+   
 ```
+## IOS9 ATS Support
 
+在Info.plist中添加以下字段
+
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+```
 # 添加集成需要的代码
 
 ### 1. 添加头文件 
