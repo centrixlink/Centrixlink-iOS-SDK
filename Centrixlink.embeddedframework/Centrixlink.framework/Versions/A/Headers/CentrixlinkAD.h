@@ -121,6 +121,9 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 + (CentrixlinkAD *)sharedInstance;
 
+
+
++ (NSString *)SDKVersion;
 /**
  *   启动SDK方法
  *
