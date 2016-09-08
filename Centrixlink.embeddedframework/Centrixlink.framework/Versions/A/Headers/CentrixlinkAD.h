@@ -14,10 +14,40 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIViewController;
 
+
+#pragma Delegate 回调字典KEY
+/**
+ *  广告Key
+ */
+extern NSString* ADInfoKEYADID;
+
+/**
+ *  是否是缓存广告
+ */
+extern NSString* ADInfoKEYPreloadStatus;
+/**
+ *  视频播放状态，true 为广告播放完毕，false为广告跳过
+ */
+extern NSString* ADInfoKEYADPlayStatus;
+/**
+ *  用于是否插屏广告显示开关
+ */
 extern NSString* ShowADOptionKeyInterstitialAD;
+/**
+ *  支持广告的方向
+ */
 extern NSString* ShowADOptionKeyOrientations;
+/**
+ *  当前App 用户ID，用于激励广告
+ */
 extern NSString* ShowADOptionKeyUser;
+/**
+ *  当前广告标识，用于激励广告
+ */
 extern NSString* ShowADOptionKeyPlacement;
+/**
+ *  其它扩展信息
+ */
 extern NSString* ShowADOptionKeyExtraInfoDictionary;
 extern NSString* ShowADOptionKeyExtra1;
 extern NSString* ShowADOptionKeyExtra2;
@@ -68,7 +98,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 /**
  *   广告显示即将关闭
- *
+ *   注：当广告有成功点击跳转才被调用
  *  @param ADInfo 广告信息
  */
 - (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo;
@@ -80,6 +110,16 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @param ADInfo 广告信息
  */
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo;
+
+
+/**
+ *   广告视频播放完毕状态
+ *
+ *  @param ADInfo 广告信息
+ */
+- (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo;
+
+
 
 
 /**
@@ -148,6 +188,9 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (BOOL)isShowableAD;
 
+/**
+ *  更新广告缓存
+ */
 - (void)flushPreloadList;
 
 /**
@@ -161,8 +204,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
 
-
--(void)newAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError **)error;
 
 /**
  *  还原Preload数据，清除缓存

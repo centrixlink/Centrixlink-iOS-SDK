@@ -67,6 +67,28 @@
 
 
 }
+- (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo
+{
+    extern NSString* ADInfoKEYADID;
+    extern NSString* ADInfoKEYPreloadStatus;
+    extern NSString* ADInfoKEYADPlayStatus;
+    
+    NSNumber *isPlayFinish= [ADInfo objectForKey:ADInfoKEYADPlayStatus];
+    
+    if ([isPlayFinish boolValue]) {
+        [self outputMessage:[NSString stringWithFormat:@"广告 ID:%@ 完整播放",[ADInfo objectForKey:ADInfoKEYADID]]];
+        
+    }else{
+        
+        [self outputMessage:[NSString stringWithFormat:@"广告 ID:%@ 跳过播放",[ADInfo objectForKey:ADInfoKEYADID]]];
+        
+    }
+    
+    NSString *message =  [ NSString stringWithFormat:@"centrixLinkADVideoPlayFinishedAD %@", ADInfo ];
+    
+    [self outputMessage:message];
+    
+}
 
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
