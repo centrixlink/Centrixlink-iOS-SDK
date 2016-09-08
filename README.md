@@ -29,9 +29,14 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
    * UIKit.framework
    
 ```
-## IOS9 ATS Support
 
-在Info.plist中添加以下字段
+
+
+##已支持HTTPS,无需ATS Support操作
+
+~~## IOS9 ATS Support~~
+
+~~在Info.plist中添加以下字段~~
 
 ```
 <key>NSAppTransportSecurity</key>
@@ -103,15 +108,31 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     
 }
 
+- (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo
+{
+  
+    
+     NSNumber *isPlayFinish= [ADInfo objectForKey:ADInfoKEYADPlayStatus];
+    
+    if ([isPlayFinish boolValue]) {
+         NSLog(@"广告视频完整播放")
+ 
+    }else{
+          NSLog(@"广告视频播放被跳过")
+    }
+    
+}
+
 
 - (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo
 {
-    
+      NSLog(@"广告已被点击，广告页面即将关闭")
+
 }
 
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
-    
+    NSLog(@"广告页面关闭")
 }
 
 
