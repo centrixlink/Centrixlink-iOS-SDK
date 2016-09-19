@@ -134,6 +134,10 @@
         BOOL isOnlyPreloadADShow = YES;
         
         [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
+        if (error) {
+            [self outputMessage:[error description]];
+
+        }
 
     }else{
         [self outputMessage:@"广告没有准备好"];
