@@ -41,6 +41,11 @@ extern NSString* ShowADOptionKeyOrientations;
  *  当前App 用户ID，用于激励广告
  */
 extern NSString* ShowADOptionKeyUser;
+
+/**
+ *  只播放预加载广告
+ */
+extern NSString* ShowADOptionKeyOnlyPreload;
 /**
  *  当前广告标识，用于激励广告
  */
@@ -173,7 +178,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (void)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
 
-
 /**
  *   加载测试数据包
  *   仅用于SDK开发调试，集成SDK不需要关心此接口
@@ -182,14 +186,22 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 - (void)loadAssetWithPath:(NSString *)path;
 
 /**
- *   是否可以显示广告
+ *   检查当前是否可以显示广告
  *   每次播放广告前请进行判断，防止无广告显示。
  *  @return true 可以播放广告，false 暂时不能播放广告；
  */
 - (BOOL)isShowableAD;
 
+
 /**
- *  更新广告缓存
+ *  是否有效的预加载广告
+ *
+ *  @return true 有预加载广告，false 暂无预加载广告
+ */
+- (BOOL)hasPreloadAD;
+
+/**
+ *  更新预加载广告列表
  */
 - (void)flushPreloadList;
 
@@ -205,8 +217,9 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
 
 
+
 /**
- *  还原Preload数据，清除缓存
+ *  清楚预加载广告数据
  */
 - (void)resetPreloadCache;
 

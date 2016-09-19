@@ -145,11 +145,19 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
+
     if(manager.isShowableAD)
     {
-               //插屏显示，如全屏显示则NO
-          BOOL isInterstitialShow = YES;
-          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow]} error:&error];
+        //manager.hasPreloadAD可预先判断是否有有效预加载广告
+
+        //插屏显示，如全屏显示则NO
+        BOOL isInterstitialShow = YES;
+          
+                    
+         //是否只显示预加载广告,如果允许显示在线广告则为NO
+         BOOL isOnlyPreloadADShow = YES; 
+          
+         [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
 
     }
   }

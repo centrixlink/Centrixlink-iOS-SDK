@@ -64,15 +64,11 @@
     
     NSString *message =  [ NSString stringWithFormat:@"centrixLinkADWillCloseAD %@", ADInfo ];
     [self outputMessage:message];
-
-
 }
+
+
 - (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo
 {
-    extern NSString* ADInfoKEYADID;
-    extern NSString* ADInfoKEYPreloadStatus;
-    extern NSString* ADInfoKEYADPlayStatus;
-    
     NSNumber *isPlayFinish= [ADInfo objectForKey:ADInfoKEYADPlayStatus];
     
     if ([isPlayFinish boolValue]) {
@@ -113,16 +109,32 @@
 
 -(IBAction)ADClick:(id)sender
 {
+    
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
+
     if(manager.isShowableAD)
     {
+        
+        
+        //manager.hasPreloadAD可预先判断是否有有效预加载广告
+        
+        if (manager.hasPreloadAD) {
+            [self outputMessage:@"当前存在有效的预加载广告"];
+        }else{
+            [self outputMessage:@"当前无有效的预加载广告"];
+
+        }
+
          //插屏显示，如全屏显示则NO
         BOOL isInterstitialShow = YES;
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow]} error:&error];
-
         
+        //是否只显示预加载广告,如果允许显示在线广告则为NO
+        BOOL isOnlyPreloadADShow = YES;
+        
+        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
+
     }else{
         [self outputMessage:@"广告没有准备好"];
     }
