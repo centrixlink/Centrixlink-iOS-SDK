@@ -130,7 +130,7 @@
         //是否只显示预加载广告,如果允许显示在线广告则为NO
         BOOL isOnlyPreloadADShow = YES;
         
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:NO],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:NO]} error:&error];
+        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }
