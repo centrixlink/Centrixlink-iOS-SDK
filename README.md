@@ -45,6 +45,15 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     <true/>
 </dict>
 ```
+
+##iOS 10 URL Schemes Support
+
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>centrixlinkad</string>
+</array>
+```
 # 添加集成需要的代码
 
 ### 1. 添加头文件 
