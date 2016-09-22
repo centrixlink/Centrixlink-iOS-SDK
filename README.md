@@ -15,20 +15,23 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework)，并添加到XCode项目中。
 3.  添加以下依赖库:
  
-```
-   * AdSupport.framework
-   * AVFoundation.framework
-   * CFNetwork.framework
-   * Foundation.framework
-   * MediaPlayer.framework
-   * libz.dylib
-   * Storekit.framework
-   * libstdc++.dylib
-   * CoreLocation.framework
-   * SystemConfiguration.framework
-   * UIKit.framework
-   
-```
+	```
+	   * AdSupport.framework
+	   * AVFoundation.framework
+	   * CFNetwork.framework
+	   * Foundation.framework
+	   * MediaPlayer.framework
+	   * libz.dylib
+	   * Storekit.framework
+	   * libstdc++.dylib
+	   * CoreLocation.framework
+	   * SystemConfiguration.framework
+	   * UIKit.framework
+	   
+	```
+4.  添加编译参数
+
+   >在Xcode中选择项目的Targets->Build Settings，配置Other Link Flags 增加 -ObjC
 
 
 

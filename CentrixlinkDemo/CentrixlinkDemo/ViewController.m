@@ -103,6 +103,8 @@
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
 
     [manager resetPreloadCache];
+    [manager flushPreloadList];
+
     [self outputMessage:@"resetPreloadCache"];
 
 }
@@ -117,7 +119,6 @@
     if(manager.isShowableAD)
     {
         //manager.hasPreloadAD可预先判断是否有有效预加载广告
-        
         if (manager.hasPreloadAD) {
             [self outputMessage:@"当前存在有效的预加载广告"];
         }else{
@@ -125,7 +126,7 @@
         }
 
          //插屏显示，如全屏显示则NO
-        BOOL isInterstitialShow = YES;
+        BOOL isInterstitialShow = NO;
         
         //是否只显示预加载广告,如果允许显示在线广告则为NO
         BOOL isOnlyPreloadADShow = YES;
@@ -141,8 +142,10 @@
 }
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 @end

@@ -124,9 +124,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo;
 
-
-
-
 /**
  *   测试数据加载完成
  *
@@ -215,9 +212,8 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @return true 成功播放，false 播放失败
  */
 - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
-
 /**
- *  清楚预加载广告数据
+ *  清除预加载广告数据
  */
 - (void)resetPreloadCache;
 
