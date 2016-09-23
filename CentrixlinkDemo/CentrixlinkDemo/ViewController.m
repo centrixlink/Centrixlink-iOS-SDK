@@ -89,6 +89,7 @@
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
     if ([ADInfo objectForKey:@"error"]) {
+        
         [self outputMessage:[ADInfo objectForKey:@"error"]];
     }else{
         NSString *message =  [ NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
@@ -123,7 +124,7 @@
          //插屏显示，如全屏显示则NO
         BOOL isInterstitialShow = NO;
         
-        //是否只显示预加载广告,如果允许显示在线广告则为NO
+        //是否只显示预加载广告,如果允许显示实时广告则为NO
         BOOL isOnlyPreloadADShow = YES;
         
         [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
