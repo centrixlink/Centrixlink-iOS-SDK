@@ -208,6 +208,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
          BOOL isInterstitialShow = YES;
 
          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
+         
         }else{
             NSLog(@"当前无有效的预加载广告");
         }
