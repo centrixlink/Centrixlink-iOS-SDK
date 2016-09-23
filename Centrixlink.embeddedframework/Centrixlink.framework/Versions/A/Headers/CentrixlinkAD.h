@@ -63,11 +63,6 @@ extern NSString* ShowADOptionKeyExtra6;
 extern NSString* ShowADOptionKeyExtra7;
 extern NSString* ShowADOptionKeyExtra8;
 
-/**
- *   后台下载完成block 定义
- */
-
-typedef void (^BackgroudCompletionHandler)();
 
 /**
  *   自定义debug输出block
@@ -92,8 +87,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 - (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo;
 
-
-
 /**
  *   广告完成显示
  *
@@ -112,7 +105,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 /**
  *   广告显示已关闭
  *
- *  @param ADInfo 广告信息
+ *  @param ADInfo 广告信息及广告播放错误信息
  */
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo;
 
@@ -124,12 +117,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo;
 
-/**
- *   测试数据加载完成
- *
- *  @param error error description
- */
-- (void)loadAsssetDidFinished:(NSError *)error;
 
 @end
 
@@ -142,18 +129,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *
  */
 @property (nonatomic, weak) id<CentrixLinkADDelegate>delegate;
-
-/**
- *  iOS后台下载完成系统回调，
- * 
- @discusstion:
-    若开启后台广告预载请添加如下代码：
- 
-  -(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
-    [CentrixlinkAD sharedInstance].backgroudCompletionHandler = completionHandler;
- }
-*/
-@property (nonatomic, copy) BackgroudCompletionHandler backgroudCompletionHandler;
 
 /**
  *   单例
@@ -175,17 +150,11 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (void)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
 
-/**
- *   加载测试数据包
- *   仅用于SDK开发调试，集成SDK不需要关心此接口
- *  @param path 测试包文件路径
- */
-- (void)loadAssetWithPath:(NSString *)path;
 
 /**
- *   检查当前是否可以显示广告
+ *   检查当前是否可以显示广告包括实时广告及预加载广告
  *   每次播放广告前请进行判断，防止无广告显示。
- *  @return true 可以播放广告，false 暂时不能播放广告；
+ *   @return true 可以播放广告，false 暂时不能播放广告；
  */
 - (BOOL)isShowableAD;
 
@@ -197,10 +166,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 - (BOOL)hasPreloadAD;
 
-/**
- *  更新预加载广告列表
- */
-- (void)flushPreloadList;
 
 /**
  *   播放广告
@@ -212,10 +177,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @return true 成功播放，false 播放失败
  */
 - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
-/**
- *  清除预加载广告数据
- */
-- (void)resetPreloadCache;
+
 
 
 /**

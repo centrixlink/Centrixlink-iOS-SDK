@@ -88,24 +88,19 @@
 
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
-    NSString *message =  [ NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
-    [self outputMessage:message];
-}
+    if ([ADInfo objectForKey:@"error"]) {
+        [self outputMessage:[ADInfo objectForKey:@"error"]];
+    }else{
+        NSString *message =  [ NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
+        [self outputMessage:message];
+    }
+ }
 
 - (IBAction)reopenActiveUser
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"Centrixlink.firstLaunch"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self outputMessage:@"reopenActiveUser"];
-
-}
-- (IBAction)resetPreload:(id)sender{
-    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
-
-    [manager resetPreloadCache];
-    [manager flushPreloadList];
-
-    [self outputMessage:@"resetPreloadCache"];
 
 }
 
