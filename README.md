@@ -119,7 +119,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  
 - (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo
 {
-        NSLog(@"视频广告数据已经准备完毕，即将开始显示，请进行当前游戏状态保存");
+        NSLog(@"视频广告数据已经准备完毕，即将开始显示；请保存当前应用或游戏状态");
 }
 
 
@@ -175,11 +175,13 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
-    NSLog(@"广告页面关闭")
 
  	if ([ADInfo objectForKey:@"error"]) {
         NSLog(@"播放广告错误 Error:%@",[ADInfo objectForKey:@"error"]);
     }
+    
+    NSLog(@"广告页面已经关闭，请恢复应用或游戏状态");
+
 }
 
 
@@ -200,10 +202,10 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  		if (manager.hasPreloadAD) {
  		   NSLog(@"当前存在有效的预加载广告");
   
-         //是否只显示预加载广告,如果允许显示在线广告则为NO
+         //是否只显示预加载广告,如果允许显示实时广告则为NO
          BOOL isOnlyPreloadADShow = YES; 
          //插屏显示，如全屏显示则NO
-        BOOL isInterstitialShow = YES;
+         BOOL isInterstitialShow = YES;
 
          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
         }else{
