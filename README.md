@@ -109,17 +109,39 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 ```objc
 #pragma mark ----CentrixlinkDelegate
 
-- (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo
-{
-    
-}
 
-
+/**
+ *    广告即将显示
+ *
+ *  @param ADInfo 广告信息
+ */
+ 
+ 
 - (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo
 {
-    
+        NSLog(@"视频广告数据已经准备完毕，即将开始显示，请进行当前游戏状态保存");
 }
 
+
+
+/**
+ *   广告完成显示
+ *
+ *  @param ADInfo 广告信息
+ */
+- (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo
+{
+      NSLog(@"视频广告页面已经显示");
+}
+
+
+
+/**
+ *   广告视频播放完毕状态
+ *
+ *  @param ADInfo 广告信息
+ */
+ 
 - (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo
 {
   
@@ -127,24 +149,37 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
      NSNumber *isPlayFinish= [ADInfo objectForKey:ADInfoKEYADPlayStatus];
     
     if ([isPlayFinish boolValue]) {
-         NSLog(@"广告视频完整播放")
+         NSLog(@"广告视频完整播放");
  
     }else{
-          NSLog(@"广告视频播放被跳过")
+          NSLog(@"广告视频播放被跳过");
     }
     
 }
 
-
+/**
+ *   广告显示即将关闭
+ *   注：当广告有成功点击跳转才被调用
+ *  @param ADInfo 广告信息
+ */
 - (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo
 {
-      NSLog(@"广告已被点击，广告页面即将关闭")
+      NSLog(@"广告已被点击，广告页面即将关闭");
 
 }
-
+/**
+ *   广告显示已关闭
+ *
+ *  @param ADInfo 广告信息，若播放广告错误则ADInfo包含error字段及错误信息
+ */
+ 
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
     NSLog(@"广告页面关闭")
+
+ 	if ([ADInfo objectForKey:@"error"]) {
+        NSLog(@"播放广告错误 Error:%@",[ADInfo objectForKey:@"error"]);
+    }
 }
 
 
@@ -177,7 +212,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     }
   }
   
-  //显示预加载及在线广告
+  //显示预加载及实时广告
   - (void)ADClick:(id )sender {
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
