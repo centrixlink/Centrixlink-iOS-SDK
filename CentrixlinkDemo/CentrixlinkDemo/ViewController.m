@@ -44,6 +44,14 @@
 
 #pragma mark ----CentrixlinkDelegate
 
+
+-(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload
+{
+    NSString *message =  [ NSString stringWithFormat:@"Preload Status %@ ", hasPreload?@"hasPreload": @"No Preload"];
+    
+    [self outputMessage:message];
+}
+
 - (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo
 {
    NSString *message =  [ NSString stringWithFormat:@"centrixLinkADDidShowAD %@", ADInfo ];

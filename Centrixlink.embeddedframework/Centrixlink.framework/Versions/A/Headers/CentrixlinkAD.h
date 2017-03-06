@@ -79,6 +79,9 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 @optional
 
+
+- (void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload;
+
 /**
  *    广告即将显示
  *
@@ -148,7 +151,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @param AppSecretKey 申请的AppSecretkey 字符串
  *  @param error        成功返回nil, 失败返回Error信息
  */
-- (void)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
+- (BOOL)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
 
 
 /**

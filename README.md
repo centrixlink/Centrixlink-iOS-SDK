@@ -109,6 +109,10 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 ```objc
 #pragma mark ----CentrixlinkDelegate
 
+-(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload
+{
+    NSLog(@"预加载状态 %@",hasPreload? @"有预加载广告":@"无预加载广告");
+}
 
 /**
  *    广告即将显示
@@ -119,7 +123,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  
 - (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo
 {
-        NSLog(@"视频广告数据已经准备完毕，即将开始显示；请保存当前应用或游戏状态");
+      NSLog(@"视频广告数据已经准备完毕，即将开始显示；请保存当前应用或游戏状态");
 }
 
 
@@ -202,7 +206,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  		if (manager.hasPreloadAD) {
  		   NSLog(@"当前存在有效的预加载广告");
   
-         //是否只显示预加载广告,如果允许显示实时广告则为NO
+         //是否只显示预加载广告,如果允许显示实时广告则为NO,推荐设置为只显示预加载广告
          BOOL isOnlyPreloadADShow = YES; 
          //插屏显示，如全屏显示则NO
          BOOL isInterstitialShow = YES;
@@ -231,3 +235,13 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     }
   }
 ```
+
+##CHANGELOG
+###1.2.136-20170306
+* 优化Preload逻辑
+* 增加预加载状态回调
+
+###1.1.81-20161108
+* 优化视频声音静音逻辑
+
+
