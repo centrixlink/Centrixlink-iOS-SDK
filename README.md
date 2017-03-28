@@ -3,12 +3,10 @@
 ## 平台支持
 iOS7+ 版本
 
-
 #### CHANGELOG
 ##### 2.0.161-20170328
-* 增加开屏广告支持
-* 优化广告加载逻辑
-
+* 增加开屏图片广告支持
+* SDK性能及业务逻辑优化
 
 ##### 1.2.136-20170306
 * 优化Preload逻辑
@@ -69,6 +67,8 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 ```
 
 ### 3. 激活SDK
+> [申请APPID及APPKEY](https://dashboard.centrixlink.com/login)
+
 * AppDelegate.m:
 ```objc
 - (BOOL)application:(UIApplication *)application 
@@ -229,9 +229,9 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     }
   }
 ```
-### 5 开屏广告相关接口
+### 5 开屏图片广告相关接口
 
-#### 5.1 设置开屏广告代理委托及加载开屏广告
+#### 5.1 设置开屏图片广告代理委托及加载开屏广告
 
 ```objc
 - (void)ShowSplash
@@ -243,7 +243,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 
 ```
-#### 5.2 跟踪开屏广告显示添加相关委托接口
+#### 5.2 跟踪开屏图片广告显示添加相关委托接口
 
 ```objc
 /*
