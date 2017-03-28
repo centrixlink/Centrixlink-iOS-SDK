@@ -1,5 +1,5 @@
 use_frameworks!
 
 target 'CentrixlinkDemo' do
-    pod 'Centrixlink-iOS', '~> 1.0'
+    pod 'Centrixlink-iOS', '~> 2.0'
 end

@@ -3,12 +3,27 @@
 ## 平台支持
 iOS7+ 版本
 
+
+#### CHANGELOG
+##### 2.0.161-20170328
+* 增加开屏广告支持
+* 优化广告加载逻辑
+
+
+##### 1.2.136-20170306
+* 优化Preload逻辑
+* 增加预加载状态回调
+
+##### 1.1.81-20161108
+* 优化视频声音静音逻辑
+
+
 #准备工作
 
 ## 自动操作
 Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下一行代码并重新运行pod install命令即可。
 
-> pod 'Centrixlink-iOS', '~> 1.0'
+> pod 'Centrixlink-iOS', '~> 2.0'
 
 ## 手动操作
 1.  从官网下载Centrixlink_iOS_SDK.zip文件;
@@ -35,28 +50,6 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 
 
-##已支持HTTPS,无需ATS Support操作
-
-~~## IOS9 ATS Support~~
-
-~~在Info.plist中添加以下字段~~
-
-```
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-</dict>
-```
-
-##iOS 10 URL Schemes Support
-
-```
-<key>LSApplicationQueriesSchemes</key>
-<array>
-    <string>centrixlinkad</string>
-</array>
-```
 # 添加集成需要的代码
 
 ### 1. 添加头文件 
@@ -94,17 +87,18 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 ```
 
-###  4. 添加如下代码到显示广告的ViewController中
+
+###  4. 添加如下代码到示视频显广告的ViewController中
 
 #### 4.1 添加代理
 ```objc
 - (void)viewDidLoad{
   //设置代理
-  [[CentrixlinkAD sharedInstance] setDelegate:self];
+   [[CentrixlinkAD sharedInstance] setDelegate:self];
   }
 ```
 
-#### 4.2 跟踪广告显示添加相关委托接口
+#### 4.2 跟踪视频广告显示添加相关委托接口
 
 ```objc
 #pragma mark ----CentrixlinkDelegate
@@ -115,7 +109,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 
 /**
- *    广告即将显示
+ *    视频广告即将显示
  *
  *  @param ADInfo 广告信息
  */
@@ -129,7 +123,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 
 /**
- *   广告完成显示
+ *   视频广告完成显示
  *
  *  @param ADInfo 广告信息
  */
@@ -141,7 +135,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 
 /**
- *   广告视频播放完毕状态
+ *   视频广告视频播放完毕状态
  *
  *  @param ADInfo 广告信息
  */
@@ -162,7 +156,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 
 /**
- *   广告显示即将关闭
+ *   视频广告显示即将关闭
  *   注：当广告有成功点击跳转才被调用
  *  @param ADInfo 广告信息
  */
@@ -174,7 +168,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 /**
  *   广告显示已关闭
  *
- *  @param ADInfo 广告信息，若播放广告错误则ADInfo包含error字段及错误信息
+ *  @param ADInfo 视频广告信息，若播放广告错误则ADInfo包含error字段及错误信息
  */
  
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
@@ -191,7 +185,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 ```
 
-#### 4.3 显示广告
+#### 4.3 显示视频广告
     
 ```objc
 
@@ -204,7 +198,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     if(manager.isShowableAD)
     {
  		if (manager.hasPreloadAD) {
- 		   NSLog(@"当前存在有效的预加载广告");
+ 		   NSLog(@"当前存在有效的预加载视频广告");
   
          //是否只显示预加载广告,如果允许显示实时广告则为NO,推荐设置为只显示预加载广告
          BOOL isOnlyPreloadADShow = YES; 
@@ -214,12 +208,12 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
          
         }else{
-            NSLog(@"当前无有效的预加载广告");
+            NSLog(@"当前无有效的预加载视频广告");
         }
     }
   }
   
-  //显示预加载及实时广告
+  //显示预加载及实时视频广告
   - (void)ADClick:(id )sender {
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
@@ -235,13 +229,66 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     }
   }
 ```
+### 5 开屏广告相关接口
 
-##CHANGELOG
-###1.2.136-20170306
-* 优化Preload逻辑
-* 增加预加载状态回调
+#### 5.1 设置开屏广告代理委托及加载开屏广告
 
-###1.1.81-20161108
-* 优化视频声音静音逻辑
+```objc
+- (void)ShowSplash
+{
+    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
 
+    [manager setSplashADdelegate:self];
+    [manager showSplashAD];
+}
+
+```
+#### 5.2 跟踪开屏广告显示添加相关委托接口
+
+```objc
+/*
+ *   开屏广告已经显示
+ *   
+ *  @param splashADInfo 广告信息
+ */
+-(void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashSuccessPresentScreen %@",splashADInfo );
+
+}
+
+/*
+ *   开屏广告已经关闭
+ *   
+ *  @param splashADInfo 广告信息
+ */
+-(void)splashAdClosed:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashAdClosed %@",splashADInfo );
+}
+
+/*
+ *   开屏广告已被点击
+ *   
+ *  @param splashADInfo 广告信息
+ */
+-(void)splashAdClicked:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashAdClicked %@",splashADInfo );
+}
+
+
+/*
+ *   显示开屏广告错误
+ *   
+ *  @param splashADInfo 广告信息
+ *  @param error 错误信息
+ */
+-(void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error
+{
+    NSLog(@"splashFailPresentScreen %@ error %@",splashADInfo,error );
+}
+
+
+```
 
