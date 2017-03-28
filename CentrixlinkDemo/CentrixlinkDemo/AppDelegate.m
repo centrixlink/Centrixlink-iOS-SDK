@@ -8,7 +8,11 @@
 
 #import "AppDelegate.h"
 #import <Centrixlink/Centrixlink.h>
-@interface AppDelegate ()
+#import "ViewController.h"
+@interface AppDelegate ()<CentrixLinkSplashADDelegate>
+{
+    ViewController *vc;
+}
 
 @end
 
@@ -20,9 +24,66 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[CentrixlinkAD sharedInstance] setDebugEnable:YES];    
-    [[CentrixlinkAD sharedInstance] startWithAppID:@"c6c982088b1f5239a9cd3420735f6f35" AppSecretKey:@"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALBB0yChZP4dAiZ0S42d68JgzbHHCmwtSoNLJ3z4GPFSUChElZwr/UkFpxCWdt62Ch7rvHzL65zzckWCttntVyUCAwEAAQ==" error:nil];
+    [[CentrixlinkAD sharedInstance] setDebugEnable:YES];
+    
+    NSError *error;
+    
+    [[CentrixlinkAD sharedInstance] startWithAppID:@"APPID" AppSecretKey:@"APPKEY" error:&error];
+    
+    if (error) {
+        NSLog(@"startWithAppID Error %@",error);
+    }else
+    {
+        [[CentrixlinkAD sharedInstance] setSplashADdelegate:self];
+        
+        [[CentrixlinkAD sharedInstance] showSplashAD];
+
+    }
+ 
+    vc = (ViewController *) [self.window rootViewController];
+    
     return YES;
+}
+
+
+-(NSString *)logmessage{
+    if(_logmessage == NULL)
+    {
+        _logmessage = @"";
+    }
+    
+    return _logmessage;
+}
+
+-(void)splashAdClosed:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashAdClosed %@",splashADInfo );
+    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashAdClosed %@",splashADInfo];
+    [vc outputMessage:[NSString stringWithFormat:@"splashAdClosed %@",splashADInfo]];
+}
+
+-(void)splashAdClicked:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashAdClicked %@",splashADInfo );
+    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashAdClicked %@",splashADInfo];
+    [vc outputMessage:[NSString stringWithFormat:@"splashAdClicked %@",splashADInfo]];
+
+}
+
+-(void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashSuccessPresentScreen %@",splashADInfo );
+    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashSuccessPresentScreen %@",splashADInfo];
+    [vc outputMessage:[NSString stringWithFormat:@"splashSuccessPresentScreen %@",splashADInfo]];
+
+}
+
+-(void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error
+{
+    NSLog(@"splashFailPresentScreen %@ error %@",splashADInfo,error );
+    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashFailPresentScreen %@ error %@",splashADInfo,error];
+    [vc outputMessage:[NSString stringWithFormat:@"splashFailPresentScreen %@, error %@",splashADInfo, error]];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

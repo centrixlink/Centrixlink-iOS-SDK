@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #import "CLSLog.h"
 
 
@@ -77,6 +79,9 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 @protocol CentrixLinkADDelegate <NSObject>
 
+@required
+- (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo;
+
 @optional
 
 
@@ -110,7 +115,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *
  *  @param ADInfo 广告信息及广告播放错误信息
  */
-- (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo;
 
 
 /**
@@ -124,7 +128,26 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 @end
 
 
+@protocol CentrixLinkSplashADDelegate <NSObject>
 
+@required
+
+
+
+- (void)splashAdClosed:(NSDictionary *)splashADInfo;
+
+
+@optional
+
+- (void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo;
+
+- (void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error;
+
+- (void)splashAdClicked:(NSDictionary *)splashADInfo;
+
+
+
+@end
 
 @interface CentrixlinkAD : NSObject
 
@@ -133,6 +156,10 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  */
 @property (nonatomic, weak) id<CentrixLinkADDelegate>delegate;
 
+
+@property (nonatomic, weak) id<CentrixLinkSplashADDelegate>splashADdelegate;
+
+@property (nonatomic, assign) NSInteger fetchDelay;
 /**
  *   单例
  *
@@ -180,6 +207,10 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @return true 成功播放，false 播放失败
  */
 - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
+
+
+
+- (BOOL)showSplashAD;
 
 
 

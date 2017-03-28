@@ -8,8 +8,13 @@
 
 #import "ViewController.h"
 #import <Centrixlink/Centrixlink.h>
+#import "AppDelegate.h"
 @interface ViewController ()<CentrixLinkADDelegate>
 @property (nonatomic, weak) IBOutlet UITextView *textView;
+@property (nonatomic, weak) IBOutlet UIButton *resetButton;
+@property (nonatomic, weak) IBOutlet UIButton *fullButton;
+@property (nonatomic, weak) IBOutlet UIButton *interButton;
+
 @end
 
 @implementation ViewController
@@ -18,12 +23,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self outputMessage:@""];
-    [[CentrixlinkAD sharedInstance] setDelegate:self];
-    [[CentrixlinkAD sharedInstance] setDebugBlock:^(NSString *message, CLSLogLevel level) {
-    
-        [self outputMessage:message];
+    [self.interButton setEnabled:NO];
+    [self.fullButton setEnabled:NO];
 
+    AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+    [[CentrixlinkAD sharedInstance] setDelegate:self];
+    
+    [[CentrixlinkAD sharedInstance] setDebugBlock:^(NSString *message, CLSLogLevel level) {
+        [self outputMessage:message];
     }];
 }
 
@@ -31,7 +38,6 @@
 -(void)outputMessage:(NSString *)message
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         [self.textView setEditable:YES];
         NSString *str = [message stringByAppendingString:@"\n----------\n"];
         [self.textView  setText:[[_textView text] stringByAppendingString:str]];
@@ -47,6 +53,8 @@
 
 -(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload
 {
+    [self.interButton setEnabled:hasPreload];
+    [self.fullButton setEnabled:hasPreload];
     NSString *message =  [ NSString stringWithFormat:@"Preload Status %@ ", hasPreload?@"hasPreload": @"No Preload"];
     
     [self outputMessage:message];
@@ -64,7 +72,6 @@
     NSString *message =  [ NSString stringWithFormat:@"centrixLinkADWillShowAD %@", ADInfo ];
 
     [self outputMessage:message];
-
 }
 
 - (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo
@@ -105,21 +112,24 @@
     }
  }
 
-- (IBAction)reopenActiveUser
+- (IBAction)restCache
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"Centrixlink.firstLaunch"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self outputMessage:@"reopenActiveUser"];
+    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
+    
+    SEL fun = NSSelectorFromString(@"resetPreloadCache");
+    if (fun) {
+        [self outputMessage:@"restPreoload"];
+        [manager performSelector:fun];
+    }
+    [self outputMessage:@"resetPreloadCache"];
 
 }
 
 -(IBAction)ADClick:(id)sender
 {
-    
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
-
     if(manager.isShowableAD)
     {
         //manager.hasPreloadAD可预先判断是否有有效预加载广告
@@ -128,7 +138,6 @@
         }else{
             [self outputMessage:@"当前无有效的预加载广告"];
         }
-
          //插屏显示，如全屏显示则NO
         BOOL isInterstitialShow = NO;
         
@@ -144,6 +153,38 @@
         [self outputMessage:@"广告没有准备好"];
     }
 }
+
+-(IBAction)interADClick:(id)sender
+{
+    
+    //当前是否可以显示广告
+    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
+    NSError *error;
+    
+    if(manager.isShowableAD)
+    {
+        //manager.hasPreloadAD可预先判断是否有有效预加载广告
+        if (manager.hasPreloadAD) {
+            [self outputMessage:@"当前存在有效的预加载广告"];
+        }else{
+            [self outputMessage:@"当前无有效的预加载广告"];
+        }
+        //插屏显示，如全屏显示则NO
+        BOOL isInterstitialShow = YES;
+        
+        //是否只显示预加载广告,如果允许显示实时广告则为NO
+        BOOL isOnlyPreloadADShow = YES;
+        
+        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
+        if (error) {
+            [self outputMessage:[error description]];
+        }
+        
+    }else{
+        [self outputMessage:@"广告没有准备好"];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     
