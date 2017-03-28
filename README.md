@@ -18,7 +18,7 @@ iOS7+ 版本
 * 优化视频声音静音逻辑
 
 
-#准备工作
+# 准备工作
 
 ## 自动操作
 Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下一行代码并重新运行pod install命令即可。
