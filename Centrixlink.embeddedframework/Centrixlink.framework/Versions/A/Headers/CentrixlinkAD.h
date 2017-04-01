@@ -31,8 +31,13 @@ extern NSString* ADInfoKEYPreloadStatus;
  *  视频播放状态，true 为广告播放完毕，false为广告跳过
  */
 extern NSString* ADInfoKEYADPlayStatus;
+
 /**
- *  用于是否插屏广告显示开关
+ * 视频广告是否被点击，true 点击，false 未点击
+ */
+extern NSString *ADInfoKEYIsClick;
+/**
+ *  用于是否插屏广告显示开关， true 为广告播放完毕，false为广告跳过
  */
 extern NSString* ShowADOptionKeyInterstitialAD;
 /**
@@ -43,15 +48,20 @@ extern NSString* ShowADOptionKeyOrientations;
  *  当前App 用户ID，用于激励广告
  */
 extern NSString* ShowADOptionKeyUser;
-
 /**
  *  只播放预加载广告
  */
 extern NSString* ShowADOptionKeyOnlyPreload;
 /**
- *  当前广告标识，用于激励广告
+ * 自动关闭EndCard页面，true 为广告自动关闭，false为手动关闭
+ */
+extern NSString* ShowADOptionKeyAutoCloseADView;
+
+/**
+ *  广告位标识
  */
 extern NSString* ShowADOptionKeyPlacement;
+
 /**
  *  其它扩展信息
  */
@@ -80,6 +90,12 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 @protocol CentrixLinkADDelegate <NSObject>
 
 @required
+/**
+ *   广告显示已关闭
+ *
+ *  @param ADInfo 广告信息及广告播放错误信息
+ */
+
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo;
 
 @optional
@@ -108,13 +124,6 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *  @param ADInfo 广告信息
  */
 - (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo;
-
-
-/**
- *   广告显示已关闭
- *
- *  @param ADInfo 广告信息及广告播放错误信息
- */
 
 
 /**

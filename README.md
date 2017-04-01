@@ -3,13 +3,12 @@
 ## 平台支持
 iOS7+ 版本
 
-
 # 准备工作
 
 ## 自动操作
 Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下一行代码并重新运行pod install命令即可。
 
-> pod 'Centrixlink-iOS', '~> 2.0'
+> pod 'Centrixlink-iOS'
 
 ## 手动操作
 1.  从官网下载Centrixlink_iOS_SDK.zip文件;
@@ -89,6 +88,27 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 #### 4.2 跟踪视频广告显示添加相关委托接口
 
 ```objc
+
+/**
+ *  广告Key
+ */
+extern NSString* ADInfoKEYADID;
+
+/**
+ *  是否是缓存广告
+ */
+extern NSString* ADInfoKEYPreloadStatus;
+/**
+ *  视频播放状态，true 为广告播放完毕，false为广告跳过
+ */
+extern NSString* ADInfoKEYADPlayStatus;
+
+/**
+ * 视频广告是否被点击，true 点击，false 未点击
+ */
+extern NSString *ADInfoKEYIsClick;
+
+
 #pragma mark ----CentrixlinkDelegate
 
 -(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload
@@ -176,6 +196,18 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 #### 4.3 显示视频广告
     
 ```objc
+/**
+ *  用于是否插屏广告显示开关， true 为广告播放完毕，false为广告跳过
+ */
+extern NSString* ShowADOptionKeyInterstitialAD;
+/**
+ *  只播放预加载广告
+ */
+extern NSString* ShowADOptionKeyOnlyPreload;
+/**
+ * 自动关闭EndCard页面，true 为广告自动关闭，false为手动关闭
+ */
+extern NSString* ShowADOptionKeyAutoCloseADView;
 
 //只显示预加载广告
 - (void)OnlyShowPreloadADClick:(id )sender {

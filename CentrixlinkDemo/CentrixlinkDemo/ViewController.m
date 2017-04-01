@@ -143,8 +143,11 @@
         
         //是否只显示预加载广告,如果允许显示实时广告则为NO
         BOOL isOnlyPreloadADShow = YES;
+       
+        //是否自动关闭EndCard，防止用户跳出后游戏自动恢复状态
+        BOOL isAutoCloseEndCard = NO;
         
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
+        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow], ShowADOptionKeyAutoCloseADView:[NSNumber numberWithBool:isAutoCloseEndCard]} error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }
@@ -174,8 +177,10 @@
         
         //是否只显示预加载广告,如果允许显示实时广告则为NO
         BOOL isOnlyPreloadADShow = YES;
-        
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
+        //是否自动关闭EndCard，防止用户跳出后游戏自动恢复状态
+        BOOL isAutoCloseEndCard = NO;
+
+        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow],ShowADOptionKeyAutoCloseADView:[NSNumber numberWithBool:isAutoCloseEndCard]} error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }
