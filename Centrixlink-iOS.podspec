@@ -27,7 +27,7 @@ s.author           = { "Centrixlink" => "devsupport@Centrixlink.com" ,"peng.zhao
 s.platform     = :ios, '7.0'
 s.requires_arc = true
 
-s.source           = { :git => "https://github.com/Centrixlink/Centrixlink-iOS-SDK.git", :tag => "2.1.224" }
+s.source           = { :git => "https://github.com/Centrixlink/Centrixlink-iOS-SDK.git", :tag => "#{s.version}" }
 s.vendored_frameworks = 'Centrixlink.embeddedframework/Centrixlink.framework'
 s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
