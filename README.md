@@ -92,21 +92,22 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 /**
  *  广告Key
  */
-extern NSString* ADInfoKEYADID;
+UIKIT_EXTERN NSString *const ADInfoKEYADID;
 
 /**
  *  是否是缓存广告
  */
-extern NSString* ADInfoKEYPreloadStatus;
+UIKIT_EXTERN NSString *const ADInfoKEYPreloadStatus;
 /**
  *  视频播放状态，true 为广告播放完毕，false为广告跳过
  */
-extern NSString* ADInfoKEYADPlayStatus;
+UIKIT_EXTERN NSString *const ADInfoKEYADPlayStatus;
+
 
 /**
  * 视频广告是否被点击，true 点击，false 未点击
  */
-extern NSString *ADInfoKEYIsClick;
+UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 
 
 #pragma mark ----CentrixlinkDelegate
@@ -197,17 +198,19 @@ extern NSString *ADInfoKEYIsClick;
     
 ```objc
 /**
- *  用于是否插屏广告显示开关， true 为广告播放完毕，false为广告跳过
+ *  用于是否插屏广告显示开关
  */
-extern NSString* ShowADOptionKeyInterstitialAD;
+UIKIT_EXTERN NSString *const ShowADOptionKeyInterstitialAD;
+
 /**
  *  只播放预加载广告
  */
-extern NSString* ShowADOptionKeyOnlyPreload;
+UIKIT_EXTERN NSString *const ShowADOptionKeyOnlyPreload;
+
 /**
  * 自动关闭EndCard页面，true 为广告自动关闭，false为手动关闭
  */
-extern NSString* ShowADOptionKeyAutoCloseADView;
+UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
 
 //只显示预加载广告
 - (void)OnlyShowPreloadADClick:(id )sender {
@@ -249,6 +252,58 @@ extern NSString* ShowADOptionKeyAutoCloseADView;
     }
   }
 ```
+#### 4.4 插屏位置自定义
+
+```objc
+/*
+    当使用插屏功能并自定义位置时可以在参数options中加入自定义的位置信息：
+*/
+
+//其中0.2、0.2、0.8分别表示距离上边距20%、左边距20%、最短边所占比例80%(最短边表示在竖屏模式下时宽占屏幕宽的比例，竖屏模式下是高占屏幕高的比例)。
+NSDictionary *positionDict = @{
+                                       K_AD_INTERSTITIAL_TOP:@(0.2),
+                                       K_AD_INTERSTITIAL_LEFT:@(0.2),
+                                       K_AD_INTERSTITIAL_VIDEOSCALE:@(0.8)
+                                       };
+
+CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
+
+[manager showAD:self options:@{ADInterstitialPosition:positionDict,ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:YES],ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:YES]} error:&error];
+if (error) {
+    NSLog(@"%@",error);            
+}
+
+```
+#### 4.5 修改插屏位置
+```objc
+/**
+ 调整插屏的布局
+ (注意：所有参数均为百分比，取值范围:[0 1])
+
+ @param top 上边距
+ @param left 左边距
+####  @param videoScale 短边占比(例如：在竖屏模式下，指的是指定区域的宽占整个屏幕宽的比例，反之横屏模式下就是指定区域的高占整个屏幕高的比例)
+ */
+- (BOOL)resizeInterstitialADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
+
+//您可以通过该接口修改插屏的位置信息。例如您可以在监听手机转屏的方法中修改横屏和竖屏模式下插屏的位置和比例。
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id <UIViewControllerTransitionCoordinatorContext> context) {
+        if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
+            //横屏
+            [[CentrixlinkAD sharedInstance] resizeInterstitialADWithTop:0 left:0 videoScale:1];
+        }else {
+            //竖屏
+            [[CentrixlinkAD sharedInstance] resizeInterstitialADWithTop:0.2 left:0.2 videoScale:0.8];
+        }
+    } completion:nil];
+}
+
+
+```
+
+
 ### 5 开屏图片广告相关接口
 
 #### 5.1 设置开屏图片广告代理委托及加载开屏广告

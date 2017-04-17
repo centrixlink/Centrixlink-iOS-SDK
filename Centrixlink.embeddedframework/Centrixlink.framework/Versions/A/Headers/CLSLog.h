@@ -52,6 +52,7 @@ FOUNDATION_EXPORT void CLSLogEx(CLSLogLevel level,
                                 unsigned int line,
                                 id __nullable contextObject,
                                 NSString *format, ...) NS_FORMAT_FUNCTION(6,7);
+
 FOUNDATION_EXTERN NSString *CLSLogLevelToString(CLSLogLevel level);
 
 

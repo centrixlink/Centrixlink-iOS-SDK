@@ -179,8 +179,14 @@
         BOOL isOnlyPreloadADShow = YES;
         //是否自动关闭EndCard，防止用户跳出后游戏自动恢复状态
         BOOL isAutoCloseEndCard = NO;
-
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow],ShowADOptionKeyAutoCloseADView:[NSNumber numberWithBool:isAutoCloseEndCard]} error:&error];
+        
+        
+        NSDictionary *positionDict = @{
+                                       K_AD_INTERSTITIAL_TOP:@(0.2),
+                                       K_AD_INTERSTITIAL_LEFT:@(0.2),
+                                       K_AD_INTERSTITIAL_VIDEOSCALE:@(0.8)
+                                       };
+        [manager showAD:self options:@{ADInterstitialPosition:positionDict,ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow],ShowADOptionKeyAutoCloseADView:[NSNumber numberWithBool:isAutoCloseEndCard]} error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }

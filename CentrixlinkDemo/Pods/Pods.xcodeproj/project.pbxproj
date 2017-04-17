@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A15021E32C61F3E556B5BC3D3B7203E /* Pods-CentrixlinkDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF2C6A45F5E10FFE435F87AE91CB55D /* Pods-CentrixlinkDemo-dummy.m */; };
+		6E2D6BE8E2769D99B4A7D797EBB9A7FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		CCBC034F7A0ADF38FF041C85558F18E7 /* Pods-CentrixlinkDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52271A3BFC2CB67B6108AF73C8AC071B /* Pods-CentrixlinkDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01B14F9970A325EEAC7161D94894A962 /* Pods-CentrixlinkDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CentrixlinkDemo-resources.sh"; sourceTree = "<group>"; };
+		03BA5DBF849E39907D56203A821787D9 /* Centrixlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Centrixlink.framework; path = Centrixlink.embeddedframework/Centrixlink.framework; sourceTree = "<group>"; };
+		28782F54D1E21F061474D6E7C3C6CB2D /* Pods-CentrixlinkDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CentrixlinkDemo-frameworks.sh"; sourceTree = "<group>"; };
+		2BFDDE6A0B58027BAD3A94DCAE567113 /* Pods-CentrixlinkDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CentrixlinkDemo.modulemap"; sourceTree = "<group>"; };
+		49E4671B2FE7779CE40E5D329E1B7D02 /* Pods-CentrixlinkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CentrixlinkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		50D82B4CE3E26A26FDA301612A9BF4B2 /* Pods_CentrixlinkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CentrixlinkDemo.framework; path = "Pods-CentrixlinkDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52271A3BFC2CB67B6108AF73C8AC071B /* Pods-CentrixlinkDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CentrixlinkDemo-umbrella.h"; sourceTree = "<group>"; };
+		658FC9A16A6D352E908DA560AB4AF991 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F34201A78BC48975AD0FCB36FB060E5 /* Pods-CentrixlinkDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CentrixlinkDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		8EF2C6A45F5E10FFE435F87AE91CB55D /* Pods-CentrixlinkDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CentrixlinkDemo-dummy.m"; sourceTree = "<group>"; };
+		92AAF6C9249A35726047BF593C2CC33D /* Pods-CentrixlinkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CentrixlinkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BA170FF591521676D9B4BB846C44B924 /* Pods-CentrixlinkDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CentrixlinkDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7554D74B91BA02E2572A683B33FF32A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E2D6BE8E2769D99B4A7D797EBB9A7FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		372EFEA426D98E854B03DCCC71BE8655 /* Pods-CentrixlinkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				658FC9A16A6D352E908DA560AB4AF991 /* Info.plist */,
+				2BFDDE6A0B58027BAD3A94DCAE567113 /* Pods-CentrixlinkDemo.modulemap */,
+				BA170FF591521676D9B4BB846C44B924 /* Pods-CentrixlinkDemo-acknowledgements.markdown */,
+				7F34201A78BC48975AD0FCB36FB060E5 /* Pods-CentrixlinkDemo-acknowledgements.plist */,
+				8EF2C6A45F5E10FFE435F87AE91CB55D /* Pods-CentrixlinkDemo-dummy.m */,
+				28782F54D1E21F061474D6E7C3C6CB2D /* Pods-CentrixlinkDemo-frameworks.sh */,
+				01B14F9970A325EEAC7161D94894A962 /* Pods-CentrixlinkDemo-resources.sh */,
+				52271A3BFC2CB67B6108AF73C8AC071B /* Pods-CentrixlinkDemo-umbrella.h */,
+				49E4671B2FE7779CE40E5D329E1B7D02 /* Pods-CentrixlinkDemo.debug.xcconfig */,
+				92AAF6C9249A35726047BF593C2CC33D /* Pods-CentrixlinkDemo.release.xcconfig */,
+			);
+			name = "Pods-CentrixlinkDemo";
+			path = "Target Support Files/Pods-CentrixlinkDemo";
+			sourceTree = "<group>";
+		};
+		6847C0EBC6107F9CFF0D736A9B663345 /* Centrixlink-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				75F030D8AA3577753621A548BD1ACCB3 /* Frameworks */,
+			);
+			name = "Centrixlink-iOS";
+			path = "Centrixlink-iOS";
+			sourceTree = "<group>";
+		};
+		6869993ED8409390DB5B2A69F0DD28F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6847C0EBC6107F9CFF0D736A9B663345 /* Centrixlink-iOS */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6FC4A92F619CD9AF08D42B27D9FAEBB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50D82B4CE3E26A26FDA301612A9BF4B2 /* Pods_CentrixlinkDemo.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		75F030D8AA3577753621A548BD1ACCB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03BA5DBF849E39907D56203A821787D9 /* Centrixlink.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A8B4B86C07B2EBAACDBBA6DE73C78B0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				372EFEA426D98E854B03DCCC71BE8655 /* Pods-CentrixlinkDemo */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				6869993ED8409390DB5B2A69F0DD28F9 /* Pods */,
+				6FC4A92F619CD9AF08D42B27D9FAEBB4 /* Products */,
+				7A8B4B86C07B2EBAACDBBA6DE73C78B0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F0A8204FD0B664AB135506FF21696AC8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCBC034F7A0ADF38FF041C85558F18E7 /* Pods-CentrixlinkDemo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		929CEE7338D0CA89C4EC0FF7F5EB141E /* Pods-CentrixlinkDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 858652EC0DF4819DF8C0CFF4079EAE54 /* Build configuration list for PBXNativeTarget "Pods-CentrixlinkDemo" */;
+			buildPhases = (
+				FD697C189F6320674BF950E228261597 /* Sources */,
+				7554D74B91BA02E2572A683B33FF32A9 /* Frameworks */,
+				F0A8204FD0B664AB135506FF21696AC8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-CentrixlinkDemo";
+			productName = "Pods-CentrixlinkDemo";
+			productReference = 50D82B4CE3E26A26FDA301612A9BF4B2 /* Pods_CentrixlinkDemo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 6FC4A92F619CD9AF08D42B27D9FAEBB4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				929CEE7338D0CA89C4EC0FF7F5EB141E /* Pods-CentrixlinkDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD697C189F6320674BF950E228261597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A15021E32C61F3E556B5BC3D3B7203E /* Pods-CentrixlinkDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4B79D320C0A212719B7C16619BDB22D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92AAF6C9249A35726047BF593C2CC33D /* Pods-CentrixlinkDemo.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CentrixlinkDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CentrixlinkDemo/Pods-CentrixlinkDemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CentrixlinkDemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6792E5ABB5F7A12CD4D4AECBAA3872F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49E4671B2FE7779CE40E5D329E1B7D02 /* Pods-CentrixlinkDemo.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CentrixlinkDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CentrixlinkDemo/Pods-CentrixlinkDemo.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CentrixlinkDemo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		79B0C2E66EFA9917ED6EDDB8FC6A7684 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF7953F66E785E8876EB4D370D777D50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF7953F66E785E8876EB4D370D777D50 /* Debug */,
+				79B0C2E66EFA9917ED6EDDB8FC6A7684 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		858652EC0DF4819DF8C0CFF4079EAE54 /* Build configuration list for PBXNativeTarget "Pods-CentrixlinkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6792E5ABB5F7A12CD4D4AECBAA3872F5 /* Debug */,
+				4B79D320C0A212719B7C16619BDB22D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
