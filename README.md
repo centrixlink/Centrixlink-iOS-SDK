@@ -75,7 +75,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 ```
 
-###  4. 添加如下代码到示视频显广告的ViewController中
+###  4. 添加如下代码到展示视频广告的ViewController中
 
 #### 4.1 添加代理
 ```objc
