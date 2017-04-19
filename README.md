@@ -180,14 +180,25 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
  
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
+    if ([ADInfo objectForKey:@"error"]) {
+        
+        [self outputMessage:[ADInfo objectForKey:@"error"]];
+    }else{
+        
+        if ([[ADInfo objectForKey:ADInfoKEYIsClick] boolValue]) {
+            NSString *message =  @"视频广告被点击";
+            [self outputMessage:message];
+        }else
+        {
+            NSString *message =  @"视频广告没有点击";
+            [self outputMessage:message];
 
- 	if ([ADInfo objectForKey:@"error"]) {
-        NSLog(@"视频播放广告错误 Error:%@",[ADInfo objectForKey:@"error"]);
+        }
+        NSString *message =  [NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
+        [self outputMessage:message];
     }
-    
-    NSLog(@"广告页面已经关闭，请恢复应用或游戏状态");
-
 }
+
 
 ```
 
