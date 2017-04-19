@@ -1,17 +1,17 @@
 # Centrixlink-iOS-SDK
 
-## 平台支持
+### 平台支持
 iOS7+ 版本
 
-# 准备工作
+### 准备工作
 
-## 自动操作
+#### 自动操作
 Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下一行代码并重新运行pod install命令即可。
 
 > pod 'Centrixlink-iOS'
 
-## 手动操作
-1.  从官网下载Centrixlink_iOS_SDK.zip文件;
+#### 手动操作
+1.  从官网下载Centrixlink_iOS_SDK.zip文件。
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework)，并添加到XCode项目中。
 3.  添加以下依赖库:
  
@@ -33,18 +33,18 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
    >在Xcode中选择项目的Targets->Build Settings，配置Other Link Flags 增加 -ObjC
 
-
-
-# 添加集成需要的代码
+### 集成说明
 
 ### 1. 添加头文件 
 * AppDelegate.h:
+
 ```objc
  #import <Centrixlink/Centrixlink.h>
 ```
 
 ### 2. 如开启后台下载添加如下代码
 * AppDelegate.m:
+
 ```objc
 - (void)application:(UIApplication *) application 
     handleEventsForBackgroundURLSession:(NSString *)identifier
@@ -57,6 +57,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 > [申请APPID及APPKEY](https://dashboard.centrixlink.com/login)
 
 * AppDelegate.m:
+
 ```objc
 - (BOOL)application:(UIApplication *)application 
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -74,7 +75,6 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 ```
 
-
 ###  4. 添加如下代码到示视频显广告的ViewController中
 
 #### 4.1 添加代理
@@ -88,7 +88,6 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 #### 4.2 跟踪视频广告显示添加相关委托接口
 
 ```objc
-
 /**
  *  广告Key
  */
@@ -130,7 +129,6 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 }
 
 
-
 /**
  *   视频广告完成显示
  *
@@ -140,7 +138,6 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 {
       NSLog(@"视频广告页面已经显示");
 }
-
 
 
 /**
@@ -190,7 +187,6 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     NSLog(@"广告页面已经关闭，请恢复应用或游戏状态");
 
 }
-
 
 ```
 
@@ -282,7 +278,7 @@ if (error) {
 
  @param top 上边距
  @param left 左边距
-####  @param videoScale 短边占比(例如：在竖屏模式下，指的是视频播放窗口宽度占屏幕宽的比例，反之横屏模式下就是视频播放窗口高度占屏幕高的比例)
+ @param videoScale 短边占比(例如：在竖屏模式下，指的是视频播放窗口宽度占屏幕宽的比例，反之横屏模式下就是视频播放窗口高度占屏幕高的比例)
  */
 - (BOOL)resizeInterstitialADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
 
@@ -300,9 +296,7 @@ if (error) {
     } completion:nil];
 }
 
-
 ```
-
 
 ### 5 开屏图片广告相关接口
 
@@ -364,6 +358,4 @@ if (error) {
     NSLog(@"splashFailPresentScreen %@ error %@",splashADInfo,error );
 }
 
-
 ```
-
