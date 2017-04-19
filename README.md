@@ -32,6 +32,8 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 4.  添加编译参数
 
    >在Xcode中选择项目的Targets->Build Settings，配置Other Link Flags 增加 -ObjC
+   
+5. >申请：[App ID、App Key](https://dashboard.centrixlink.com/login)
 
 ### 集成说明
 
@@ -54,7 +56,6 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 ```
 
 ### 3. 激活SDK
-> [申请APPID及APPKEY](https://dashboard.centrixlink.com/login)
 
 * AppDelegate.m:
 
