@@ -3,12 +3,12 @@
 ## 平台支持
 iOS7+ 版本
 
-#准备工作
+# 准备工作
 
 ## 自动操作
 Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下一行代码并重新运行pod install命令即可。
 
-> pod 'Centrixlink-iOS', '~> 1.0'
+> pod 'Centrixlink-iOS'
 
 ## 手动操作
 1.  从官网下载Centrixlink_iOS_SDK.zip文件;
@@ -35,28 +35,6 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 
 
-##已支持HTTPS,无需ATS Support操作
-
-~~## IOS9 ATS Support~~
-
-~~在Info.plist中添加以下字段~~
-
-```
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-</dict>
-```
-
-##iOS 10 URL Schemes Support
-
-```
-<key>LSApplicationQueriesSchemes</key>
-<array>
-    <string>centrixlinkad</string>
-</array>
-```
 # 添加集成需要的代码
 
 ### 1. 添加头文件 
@@ -76,6 +54,8 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 ```
 
 ### 3. 激活SDK
+> [申请APPID及APPKEY](https://dashboard.centrixlink.com/login)
+
 * AppDelegate.m:
 ```objc
 - (BOOL)application:(UIApplication *)application 
@@ -94,19 +74,42 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 ```
 
-###  4. 添加如下代码到显示广告的ViewController中
+
+###  4. 添加如下代码到示视频显广告的ViewController中
 
 #### 4.1 添加代理
 ```objc
 - (void)viewDidLoad{
   //设置代理
-  [[CentrixlinkAD sharedInstance] setDelegate:self];
+   [[CentrixlinkAD sharedInstance] setDelegate:self];
   }
 ```
 
-#### 4.2 跟踪广告显示添加相关委托接口
+#### 4.2 跟踪视频广告显示添加相关委托接口
 
 ```objc
+
+/**
+ *  广告Key
+ */
+UIKIT_EXTERN NSString *const ADInfoKEYADID;
+
+/**
+ *  是否是缓存广告
+ */
+UIKIT_EXTERN NSString *const ADInfoKEYPreloadStatus;
+/**
+ *  视频播放状态，true 为广告播放完毕，false为广告跳过
+ */
+UIKIT_EXTERN NSString *const ADInfoKEYADPlayStatus;
+
+
+/**
+ * 视频广告是否被点击，true 点击，false 未点击
+ */
+UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
+
+
 #pragma mark ----CentrixlinkDelegate
 
 -(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload
@@ -115,7 +118,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 
 /**
- *    广告即将显示
+ *    视频广告即将显示
  *
  *  @param ADInfo 广告信息
  */
@@ -129,7 +132,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 
 /**
- *   广告完成显示
+ *   视频广告完成显示
  *
  *  @param ADInfo 广告信息
  */
@@ -141,7 +144,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 
 /**
- *   广告视频播放完毕状态
+ *   视频广告视频播放完毕状态
  *
  *  @param ADInfo 广告信息
  */
@@ -162,7 +165,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 
 /**
- *   广告显示即将关闭
+ *   视频广告显示即将关闭
  *   注：当广告有成功点击跳转才被调用
  *  @param ADInfo 广告信息
  */
@@ -174,7 +177,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 /**
  *   广告显示已关闭
  *
- *  @param ADInfo 广告信息，若播放广告错误则ADInfo包含error字段及错误信息
+ *  @param ADInfo 视频广告信息，若播放广告错误则ADInfo包含error字段及错误信息
  */
  
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
@@ -191,9 +194,23 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 
 ```
 
-#### 4.3 显示广告
+#### 4.3 显示视频广告
     
 ```objc
+/**
+ *  用于是否插屏广告显示开关
+ */
+UIKIT_EXTERN NSString *const ShowADOptionKeyInterstitialAD;
+
+/**
+ *  只播放预加载广告
+ */
+UIKIT_EXTERN NSString *const ShowADOptionKeyOnlyPreload;
+
+/**
+ * 自动关闭EndCard页面，true 为广告自动关闭，false为手动关闭
+ */
+UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
 
 //只显示预加载广告
 - (void)OnlyShowPreloadADClick:(id )sender {
@@ -204,7 +221,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     if(manager.isShowableAD)
     {
  		if (manager.hasPreloadAD) {
- 		   NSLog(@"当前存在有效的预加载广告");
+ 		   NSLog(@"当前存在有效的预加载视频广告");
   
          //是否只显示预加载广告,如果允许显示实时广告则为NO,推荐设置为只显示预加载广告
          BOOL isOnlyPreloadADShow = YES; 
@@ -214,12 +231,12 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
          
         }else{
-            NSLog(@"当前无有效的预加载广告");
+            NSLog(@"当前无有效的预加载视频广告");
         }
     }
   }
   
-  //显示预加载及实时广告
+  //显示预加载及实时视频广告
   - (void)ADClick:(id )sender {
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
@@ -235,13 +252,118 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
     }
   }
 ```
+#### 4.4 插屏位置自定义
 
-##CHANGELOG
-###1.2.136-20170306
-* 优化Preload逻辑
-* 增加预加载状态回调
+```objc
+/*
+    当使用插屏功能并自定义位置时可以在参数options中加入自定义的位置信息：
+*/
 
-###1.1.81-20161108
-* 优化视频声音静音逻辑
+//其中0.2、0.2、0.8分别表示距离上边距20%、左边距20%、最短边所占比例80%(最短边表示在竖屏模式下时宽占屏幕宽的比例，竖屏模式下是高占屏幕高的比例)。
+NSDictionary *positionDict = @{
+                                       K_AD_INTERSTITIAL_TOP:@(0.2),
+                                       K_AD_INTERSTITIAL_LEFT:@(0.2),
+                                       K_AD_INTERSTITIAL_VIDEOSCALE:@(0.8)
+                                       };
 
+CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
+
+[manager showAD:self options:@{ADInterstitialPosition:positionDict,ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:YES],ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:YES]} error:&error];
+if (error) {
+    NSLog(@"%@",error);            
+}
+
+```
+#### 4.5 修改插屏位置
+```objc
+/**
+ 调整插屏的布局
+ (注意：所有参数均为百分比，取值范围:[0 1])
+
+ @param top 上边距
+ @param left 左边距
+####  @param videoScale 短边占比(例如：在竖屏模式下，指的是指定区域的宽占整个屏幕宽的比例，反之横屏模式下就是指定区域的高占整个屏幕高的比例)
+ */
+- (BOOL)resizeInterstitialADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
+
+//您可以通过该接口修改插屏的位置信息。例如您可以在监听手机转屏的方法中修改横屏和竖屏模式下插屏的位置和比例。
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id <UIViewControllerTransitionCoordinatorContext> context) {
+        if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
+            //横屏
+            [[CentrixlinkAD sharedInstance] resizeInterstitialADWithTop:0 left:0 videoScale:1];
+        }else {
+            //竖屏
+            [[CentrixlinkAD sharedInstance] resizeInterstitialADWithTop:0.2 left:0.2 videoScale:0.8];
+        }
+    } completion:nil];
+}
+
+
+```
+
+
+### 5 开屏图片广告相关接口
+
+#### 5.1 设置开屏图片广告代理委托及加载开屏广告
+
+```objc
+- (void)ShowSplash
+{
+    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
+
+    [manager setSplashADdelegate:self];
+    [manager showSplashAD];
+}
+
+```
+#### 5.2 跟踪开屏图片广告显示添加相关委托接口
+
+```objc
+/*
+ *   开屏广告已经显示
+ *   
+ *  @param splashADInfo 广告信息
+ */
+-(void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashSuccessPresentScreen %@",splashADInfo );
+
+}
+
+/*
+ *   开屏广告已经关闭
+ *   
+ *  @param splashADInfo 广告信息
+ */
+-(void)splashAdClosed:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashAdClosed %@",splashADInfo );
+}
+
+/*
+ *   开屏广告已被点击
+ *   
+ *  @param splashADInfo 广告信息
+ */
+-(void)splashAdClicked:(NSDictionary *)splashADInfo
+{
+    NSLog(@"splashAdClicked %@",splashADInfo );
+}
+
+
+/*
+ *   显示开屏广告错误
+ *   
+ *  @param splashADInfo 广告信息
+ *  @param error 错误信息
+ */
+-(void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error
+{
+    NSLog(@"splashFailPresentScreen %@ error %@",splashADInfo,error );
+}
+
+
+```
 
