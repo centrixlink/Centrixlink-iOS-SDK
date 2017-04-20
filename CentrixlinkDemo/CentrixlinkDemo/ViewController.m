@@ -107,10 +107,20 @@
         
         [self outputMessage:[ADInfo objectForKey:@"error"]];
     }else{
-        NSString *message =  [ NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
+        
+        if ([[ADInfo objectForKey:ADInfoKEYIsClick] boolValue]) {
+            NSString *message =  @"当前广告被点击";
+            [self outputMessage:message];
+        }else
+        {
+            NSString *message =  @"当前有广告没有点击";
+            [self outputMessage:message];
+            
+        }
+        NSString *message =  [NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
         [self outputMessage:message];
     }
- }
+}
 
 - (IBAction)restCache
 {
