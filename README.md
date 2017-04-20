@@ -181,21 +181,20 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
 {
     if ([ADInfo objectForKey:@"error"]) {
-        
-        [self outputMessage:[ADInfo objectForKey:@"error"]];
+        NSLog(@"%@",[ADInfo objectForKey:@"error"]);
     }else{
         
         if ([[ADInfo objectForKey:ADInfoKEYIsClick] boolValue]) {
             NSString *message =  @"视频广告被点击";
-            [self outputMessage:message];
+            NSLog(@"%@",message);
         }else
         {
             NSString *message =  @"视频广告没有点击";
-            [self outputMessage:message];
+            NSLog(@"%@",message);
 
         }
         NSString *message =  [NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
-        [self outputMessage:message];
+        NSLog(@"%@",message);
     }
 }
 
@@ -371,3 +370,5 @@ if (error) {
 }
 
 ```
+
+
