@@ -44,7 +44,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  #import <Centrixlink/Centrixlink.h>
 ```
 
-### 2. 如开启后台下载添加如下代码
+### 2. 开启后台预加载
 * AppDelegate.m:
 
 ```objc
@@ -76,7 +76,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
 }
 ```
 
-###  4. 添加如下代码到展示视频广告的ViewController中
+###  4. 添加代码到展示视频广告的ViewController中
 
 #### 4.1 添加代理
 ```objc
@@ -86,7 +86,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
   }
 ```
 
-#### 4.2 跟踪视频广告显示添加相关委托接口
+#### 4.2 跟踪视频广告展示添加相关委托接口
 
 ```objc
 /**
@@ -118,7 +118,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 }
 
 /**
- *    视频广告即将显示
+ *    视频广告即将展示
  *
  *  @param ADInfo 视频广告信息
  */
@@ -126,18 +126,18 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
  
 - (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo
 {
-      NSLog(@"视频广告数据已经准备完毕，即将开始显示；请保存当前应用或游戏状态");
+      NSLog(@"视频广告数据已经准备完毕，即将开始展示；请保存当前应用或游戏状态");
 }
 
 
 /**
- *   视频广告完成显示
+ *   视频广告完成展示
  *
  *  @param ADInfo 视频广告信息
  */
 - (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo
 {
-      NSLog(@"视频广告页面已经显示");
+      NSLog(@"视频广告页面已经展示");
 }
 
 
@@ -163,7 +163,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 }
 
 /**
- *   视频广告显示即将关闭
+ *   视频广告展示即将关闭
  *   注：当视频广告有成功点击跳转才被调用
  *  @param ADInfo 广告信息
  */
@@ -173,7 +173,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 
 }
 /**
- *   视频广告显示已关闭
+ *   视频广告展示已关闭
  *
  *  @param ADInfo 视频广告信息，若播放广告错误则ADInfo包含error字段及错误信息
  */
@@ -201,11 +201,11 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 
 ```
 
-#### 4.3 显示视频广告
+#### 4.3 展示视频广告
     
 ```objc
 /**
- *  用于是否显示插屏视频广告开关
+ *  用于是否展示非全屏视频广告开关
  */
 UIKIT_EXTERN NSString *const ShowADOptionKeyInterstitialAD;
 
@@ -215,13 +215,13 @@ UIKIT_EXTERN NSString *const ShowADOptionKeyInterstitialAD;
 UIKIT_EXTERN NSString *const ShowADOptionKeyOnlyPreload;
 
 /**
- * 自动关闭EndCard页面，true为视频广告自动关闭，false为手动关闭
+ * 自动关闭Endcard页面，true为视频广告自动关闭，false为手动关闭
  */
 UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
 
-//只显示预加载视频广告
+//只展示预加载视频广告
 - (void)OnlyShowPreloadADClick:(id )sender {
-    //当前是否可以显示视频广告
+    //当前是否可以展示视频广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
 
@@ -230,9 +230,9 @@ UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
  		if (manager.hasPreloadAD) {
  		   NSLog(@"当前存在有效的预加载视频广告");
   
-         //是否只显示预加载视频广告,如果允许显示实时视频广告则为NO,推荐设置为只显示预加载视频广告
+         //是否只展示预加载视频广告,如果允许展示实时视频广告则为NO,推荐设置为只展示预加载视频广告
          BOOL isOnlyPreloadADShow = YES; 
-         //视频广告插屏显示，如全屏显示则为NO
+         //视频广告非全屏展示，如全屏展示则为NO
          BOOL isInterstitialShow = YES;
 
          [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow]} error:&error];
@@ -243,15 +243,15 @@ UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
     }
   }
   
-  //显示预加载及实时视频广告
+  //展示预加载及实时视频广告
   - (void)ADClick:(id )sender {
-    //当前是否可以显示视频广告
+    //当前是否可以展示视频广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
 
     if(manager.isShowableAD)
     {
-        //视频广告插屏显示，如全屏显示则为NO
+        //视频广告非全屏展示，如全屏展示则为NO
         BOOL isInterstitialShow = YES;
               
         [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow]} error:&error];
@@ -259,14 +259,14 @@ UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
     }
   }
 ```
-#### 4.4 插屏视频广告位置自定义
+#### 4.4 非全屏视频广告位置自定义
 
 ```objc
 /*
-    当使用插屏视频广告功能并自定义位置时可以在参数options中加入自定义的位置信息：
+    当使用非全屏视频广告功能并自定义位置时可以在参数options中加入自定义的位置信息：
 */
 
-//其中0.2、0.2、0.8分别表示距离上边距20%、左边距20%、最短边所占比例80%(最短边表示在竖屏模式下是视频播放窗口宽度占屏幕宽的比例，横屏模式下是视频播放窗口高度占屏幕高的比例)。
+//其中0.2、0.2、0.8分别表示距离上边距20%、左边距20%、最短边所占比例80%(最短边表示在竖屏模式下视频播放窗口宽度占屏幕宽的比例，横屏模式下视频播放窗口高度占屏幕高的比例)。
 NSDictionary *positionDict = @{
                                        K_AD_INTERSTITIAL_TOP:@(0.2),
                                        K_AD_INTERSTITIAL_LEFT:@(0.2),
@@ -281,10 +281,10 @@ if (error) {
 }
 
 ```
-#### 4.5 修改插屏视频广告位置
+#### 4.5 修改非全屏视频广告位置
 ```objc
 /**
- 调整插屏视频广告的布局
+ 调整非全屏视频广告的布局
  (注意：所有参数均为百分比，取值范围:[0 1])
 
  @param top 上边距
@@ -293,7 +293,7 @@ if (error) {
  */
 - (BOOL)resizeInterstitialADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
 
-//您可以通过该接口修改视频插屏播放的位置信息，例如可以在监听手机转屏的方法中修改横屏和竖屏模式下插屏的位置和比例。
+//可以通过该接口修改视频非全屏播放的位置信息，例如可以在监听手机转屏的方法中修改横屏和竖屏模式下非全屏展示的位置和比例。
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
     [coordinator animateAlongsideTransition:^(id <UIViewControllerTransitionCoordinatorContext> context) {
@@ -323,12 +323,12 @@ if (error) {
 }
 
 ```
-#### 5.2 跟踪开屏图片广告显示添加相关委托接口
+#### 5.2 跟踪开屏图片广告展示添加相关委托接口
 
 ```objc
 /*
- *   开屏图片广告已经显示
- *   
+ *   开屏图片广告已经展示
+ *   
  *  @param splashADInfo 开屏图片广告信息
  */
 -(void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo
@@ -359,7 +359,7 @@ if (error) {
 
 
 /*
- *   显示开屏图片广告错误
+ *   展示开屏图片广告错误
  *   
  *  @param splashADInfo 开屏图片广告信息
  *  @param error 错误信息
@@ -370,5 +370,3 @@ if (error) {
 }
 
 ```
-
-
