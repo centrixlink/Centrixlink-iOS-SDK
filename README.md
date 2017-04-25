@@ -35,7 +35,7 @@ Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapo
  
 5. 状态栏控制设置
 
-   > 打开项目的Info.plist，增加 "View controller-based status bar appearance" 选项，并设置为 "No".
+ > 打开项目的Info.plist，增加 "View controller-based status bar appearance" 选项，并设置为 "No".
    
    
 6. 申请：[App ID、App Key](https://dashboard.centrixlink.com/login)
