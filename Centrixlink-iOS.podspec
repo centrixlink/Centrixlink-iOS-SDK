@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "Centrixlink-iOS"
-s.version          = "2.1.254"
+s.version          = "2.2.0"
 s.summary          = "Centrixlink's iOS SDK'"
 
 # This description is used to generate tags and improve search results.
