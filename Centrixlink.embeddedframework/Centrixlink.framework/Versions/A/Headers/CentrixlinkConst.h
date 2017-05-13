@@ -24,6 +24,7 @@ UIKIT_EXTERN NSString *const K_AD_INTERSTITIAL_LEFT;
 
 UIKIT_EXTERN NSString *const K_AD_INTERSTITIAL_VIDEOSCALE;
 
+UIKIT_EXTERN NSString *const SDK_VERSION;
 
 
 #pragma Delegate 回调字典KEY
@@ -82,6 +83,13 @@ UIKIT_EXTERN NSString *const ShowADOptionKeyPlacement;
  *  插屏广告显示的位置
  */
 UIKIT_EXTERN NSString *const ADInterstitialPosition;
+
+
+UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationLandscapeLeft;
+UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationLandscapeRight;
+UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationPortrait;
+UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationPortraitUpsideDown;
+
 
 
 /**

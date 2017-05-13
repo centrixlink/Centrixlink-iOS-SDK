@@ -28,7 +28,7 @@
     
     NSError *error;
     
-    [[CentrixlinkAD sharedInstance] startWithAppID:@"APPID" AppSecretKey:@"APPKEY" error:&error];
+    [[CentrixlinkAD sharedInstance] startWithAppID:@"app id" AppSecretKey:@"app key" error:nil];
     
     if (error) {
         NSLog(@"startWithAppID Error %@",error);

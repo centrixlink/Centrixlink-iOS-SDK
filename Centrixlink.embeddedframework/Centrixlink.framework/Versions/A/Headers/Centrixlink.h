@@ -19,6 +19,5 @@ FOUNDATION_EXPORT const unsigned char CentrixlinkVersionString[];
 #import <Centrixlink/CentrixlinkAD.h>
 #import <Centrixlink/CentrixlinkConst.h>
 #import <Centrixlink/CentrixlinkProtocol.h>
-#import <Centrixlink/CentrixLinkNetworkManager.h>
 
 
