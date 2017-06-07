@@ -58,5 +58,3 @@ fastlane/screenshots
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-CentrixlinkDemo/Pods/
-CentrixlinkDemo/Podfile.lock

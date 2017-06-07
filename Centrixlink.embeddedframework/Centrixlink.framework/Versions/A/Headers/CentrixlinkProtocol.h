@@ -7,18 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+@class CentrixlinkADItem;
+
+
+
+
+
+
 
 #pragma mark - CentrixLinkADDelegate
 
 @protocol CentrixLinkADDelegate <NSObject>
-
 @required
-- (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo;
+/**
+ 广告关闭
+ 
+ @param ADInfo 预留信息
+ */
+- (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo;
 
 @optional
 
+/**
+ 本地是否有预加载广告
 
-- (void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload;
+ @param isPreloadFinished YES:存在 NO:不存在
+ */
+- (void)centrixLinkHasPreloadAD:(BOOL)hasPreload;
 
 /**
  *    广告即将显示
@@ -26,36 +41,32 @@
  *  @param ADInfo 广告信息
  */
 
-- (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo;
+- (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo;
 
 /**
  *   广告完成显示
  *
  *  @param ADInfo 广告信息
  */
-- (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo;
+- (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo;
 
-/**
- *   广告显示即将关闭
- *   注：当广告有成功点击跳转才被调用
- *  @param ADInfo 广告信息
- */
-- (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo;
+
 
 
 /**
- *   广告显示已关闭
- *
- *  @param ADInfo 广告信息及广告播放错误信息
+ 触发endCard的action事件
+
+ @param ADInfo 预留信息
  */
+- (void)centrixLinkVideoADAction:(NSDictionary *)ADInfo;
 
 
 /**
- *   广告视频播放完毕状态
- *
- *  @param ADInfo 广告信息
+ 显示广告出错
+
+ @param error 通过不同的error code区分不同的错误类型
  */
-- (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo;
+- (void)centrixLinkVideoADShowFail:(NSError *)error;
 
 
 @end
@@ -66,24 +77,51 @@
 
 @protocol CentrixLinkSplashADDelegate <NSObject>
 
-@required
+
+/**
+ 开屏广告关闭
+
+ @param info
+ */
+- (void)centrixlinkSplashADClosed:(NSDictionary *)info;
 
 
+/**
+ 开屏广告显示成功
 
-- (void)splashAdClosed:(NSDictionary *)splashADInfo;
+ @param info
+ */
+- (void)centrixlinkSplashADDidShow:(NSDictionary *)info;
 
 
-@optional
+/**
+ 开屏广告跳过
 
-- (void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo;
+ @param info
+ */
+- (void)centrixlinkSplashADSkip:(NSDictionary *)info;
 
-- (void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error;
 
-- (void)splashAdClicked:(NSDictionary *)splashADInfo;
+/**
+ 开屏广告触发了action事件
+
+ @param info
+ */
+- (void)centrixlinkSplashADAction:(NSDictionary *)info;
+
+
+/**
+ 开屏广告显示失败
+
+ @param error 不同的error code对于不同的错误信息
+ */
+- (void)centrixlinkSplashADShowFail:(NSError *)error;
 
 
 
 @end
+
+
 
 
 

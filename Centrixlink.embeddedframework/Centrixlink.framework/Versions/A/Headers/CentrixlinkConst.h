@@ -11,21 +11,42 @@
 
 @interface CentrixlinkConst : NSObject
 
-struct CentrixlinkPosition {
-    float top;
-    float left;
-    float videoScale;
-};
+/* VideoADEventTable */
+UIKIT_EXTERN NSString *const VIDEO_EVENT_TABLE;
+/* SplashADEventTable */
+UIKIT_EXTERN NSString *const SPLASH_EVENT_TABLE;
+/* ADDownloadedTable */
+UIKIT_EXTERN NSString *const DOWNLOADED_AD_TABLE;
+/* ADFileTable */
+UIKIT_EXTERN NSString *const DOWNLOADED_FILE_TABLE;
+/* BuryingPointTable */
+UIKIT_EXTERN NSString *const BURYINGPOINT_TABLE;
+/* ADRequestTable */
+UIKIT_EXTERN NSString *const REQUEST_TABLE;
 
 
-UIKIT_EXTERN NSString *const K_AD_INTERSTITIAL_TOP;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_UUID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_VERSION;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_APPID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_REQUESTID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_OS;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_MODEL;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_OSVER;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_APPVER;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_BUNDLEID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_REPORT_REQUESTID;
 
-UIKIT_EXTERN NSString *const K_AD_INTERSTITIAL_LEFT;
 
-UIKIT_EXTERN NSString *const K_AD_INTERSTITIAL_VIDEOSCALE;
+
+
+UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_TOP;
+
+UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_LEFT;
+
+UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_VIDEOSCALE;
+
 
 UIKIT_EXTERN NSString *const SDK_VERSION;
-
 
 #pragma Delegate 回调字典KEY
 /**
@@ -52,7 +73,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 /**
  *  用于是否插屏广告显示开关
  */
-UIKIT_EXTERN NSString *const ShowADOptionKeyInterstitialAD;
+UIKIT_EXTERN NSString *const ShowADOptionKeyRESIZEVIDEOAD;
 /**
  *  支持广告的方向
  */
@@ -82,7 +103,7 @@ UIKIT_EXTERN NSString *const ShowADOptionKeyPlacement;
 /**
  *  插屏广告显示的位置
  */
-UIKIT_EXTERN NSString *const ADInterstitialPosition;
+UIKIT_EXTERN NSString *const ADRESIZEVIDEOPosition;
 
 
 UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationLandscapeLeft;

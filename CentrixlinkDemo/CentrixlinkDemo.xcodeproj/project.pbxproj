@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41CA92B72837C50F7CA756DF /* Pods_CentrixlinkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D11E1F6755D72ED35A259D6 /* Pods_CentrixlinkDemo.framework */; };
+		758FDC551EE6C2FC00C2B526 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 758FDC541EE6C2FC00C2B526 /* libsqlite3.tbd */; };
 		A081D6031D5DC89C00864E01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6021D5DC89C00864E01 /* main.m */; };
 		A081D6061D5DC89C00864E01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6051D5DC89C00864E01 /* AppDelegate.m */; };
 		A081D6091D5DC89C00864E01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6081D5DC89C00864E01 /* ViewController.m */; };
@@ -26,6 +27,7 @@
 		1D11E1F6755D72ED35A259D6 /* Pods_CentrixlinkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CentrixlinkDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF1F49D6FDDD377E519E6E9 /* Pods-CentrixlinkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CentrixlinkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CentrixlinkDemo/Pods-CentrixlinkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		70B7683B3C72A217C6FA8F4E /* Pods-CentrixlinkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CentrixlinkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CentrixlinkDemo/Pods-CentrixlinkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		758FDC541EE6C2FC00C2B526 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A081D5FE1D5DC89C00864E01 /* CentrixlinkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CentrixlinkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A081D6021D5DC89C00864E01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A081D6041D5DC89C00864E01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758FDC551EE6C2FC00C2B526 /* libsqlite3.tbd in Frameworks */,
 				A081D62D1D61AD7000864E01 /* MediaPlayer.framework in Frameworks */,
 				A081D62B1D61AD1100864E01 /* libstdc++.tbd in Frameworks */,
 				A081D6271D61ACF600864E01 /* AdSupport.framework in Frameworks */,
@@ -119,6 +122,7 @@
 		A715823E456479C212834EA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				758FDC541EE6C2FC00C2B526 /* libsqlite3.tbd */,
 				1D11E1F6755D72ED35A259D6 /* Pods_CentrixlinkDemo.framework */,
 			);
 			name = Frameworks;
@@ -246,7 +250,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

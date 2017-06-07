@@ -30,20 +30,47 @@
     
     [[CentrixlinkAD sharedInstance] startWithAppID:@"app id" AppSecretKey:@"app key" error:nil];
     
+
     if (error) {
         NSLog(@"startWithAppID Error %@",error);
-    }else
-    {
+    }else {
         [[CentrixlinkAD sharedInstance] setSplashADdelegate:self];
         
-        [[CentrixlinkAD sharedInstance] showSplashAD];
-
+        [[CentrixlinkAD sharedInstance] playSplashAD];
+        
     }
- 
+    
     vc = (ViewController *) [self.window rootViewController];
+    
+   
     
     return YES;
 }
+
+
+#pragma mark - CentrixLinkSplashADDelegate
+
+- (void)centrixlinkSplashADDidShow:(NSDictionary *)info {
+
+}
+
+- (void)centrixlinkSplashADClosed:(NSDictionary *)info {
+    NSLog(@"%@", info);
+}
+
+- (void)centrixlinkSplashADShowFail:(NSError *)error {
+
+}
+
+- (void)centrixlinkSplashADSkip:(NSDictionary *)info {
+    NSLog(@"%@", info);
+}
+
+- (void)centrixlinkSplashADAction:(NSDictionary *)info {
+    NSLog(@"%@", info);
+}
+
+
 
 
 -(NSString *)logmessage{
@@ -55,36 +82,6 @@
     return _logmessage;
 }
 
--(void)splashAdClosed:(NSDictionary *)splashADInfo
-{
-    NSLog(@"splashAdClosed %@",splashADInfo );
-    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashAdClosed %@",splashADInfo];
-    [vc outputMessage:[NSString stringWithFormat:@"splashAdClosed %@",splashADInfo]];
-}
-
--(void)splashAdClicked:(NSDictionary *)splashADInfo
-{
-    NSLog(@"splashAdClicked %@",splashADInfo );
-    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashAdClicked %@",splashADInfo];
-    [vc outputMessage:[NSString stringWithFormat:@"splashAdClicked %@",splashADInfo]];
-
-}
-
--(void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo
-{
-    NSLog(@"splashSuccessPresentScreen %@",splashADInfo );
-    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashSuccessPresentScreen %@",splashADInfo];
-    [vc outputMessage:[NSString stringWithFormat:@"splashSuccessPresentScreen %@",splashADInfo]];
-
-}
-
--(void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error
-{
-    NSLog(@"splashFailPresentScreen %@ error %@",splashADInfo,error );
-    self.logmessage = [self.logmessage stringByAppendingFormat:@"splashFailPresentScreen %@ error %@",splashADInfo,error];
-    [vc outputMessage:[NSString stringWithFormat:@"splashFailPresentScreen %@, error %@",splashADInfo, error]];
-
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

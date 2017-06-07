@@ -29,7 +29,7 @@
     AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
     [[CentrixlinkAD sharedInstance] setDelegate:self];
     
-    [[CentrixlinkAD sharedInstance] setDebugBlock:^(NSString *message, CLSLogLevel level) {
+    [[CentrixlinkAD sharedInstance] setDebugCallBack:^(NSString *message, CLSLogLevel level) {
         [self outputMessage:message];
     }];
 }
@@ -47,91 +47,54 @@
     });
 }
 
-
 #pragma mark ----CentrixlinkDelegate
 
 
--(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload
-{
+- (void)centrixLinkHasPreloadAD:(BOOL)hasPreload {
     [self.interButton setEnabled:hasPreload];
     [self.fullButton setEnabled:hasPreload];
     NSString *message =  [ NSString stringWithFormat:@"Preload Status %@ ", hasPreload?@"hasPreload": @"No Preload"];
-    
     [self outputMessage:message];
 }
 
-- (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo
-{
-   NSString *message =  [ NSString stringWithFormat:@"centrixLinkADDidShowAD %@", ADInfo ];
+- (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo {
+    NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo \n";
+    [self outputMessage:message];
+    NSLog(@"%@", message);
+}
+
+- (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo {
+    NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo \n";
+    [self outputMessage:message];
+    NSLog(@"%@", message);
+    
+}
+
+- (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo {
+    NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo \n";
+    
+    
     
     [self outputMessage:message];
+    NSLog(@"%@", message);
 }
 
-- (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo
-{
-    NSString *message =  [ NSString stringWithFormat:@"centrixLinkADWillShowAD %@", ADInfo ];
-
+- (void)centrixLinkVideoADAction:(NSDictionary *)ADInfo {
+    NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADAction:(NSDictionary *)ADInfo \n";
     [self outputMessage:message];
+    NSLog(@"%@", message);
 }
 
-- (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo
-{
-    
-    NSString *message =  [ NSString stringWithFormat:@"centrixLinkADWillCloseAD %@", ADInfo ];
+
+- (void)centrixLinkVideoADShowFail:(NSError *)error {
+    NSString *message =  [NSString stringWithFormat:@" ***CallBack*** \n - (void)centrixLinkVideoADShowFail:(NSError *)error %@\n", error];
     [self outputMessage:message];
+    NSLog(@"%@", message);
 }
 
 
-- (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo
-{
-    NSNumber *isPlayFinish= [ADInfo objectForKey:ADInfoKEYADPlayStatus];
-    
-    if ([isPlayFinish boolValue]) {
-        [self outputMessage:[NSString stringWithFormat:@"广告 ID:%@ 完整播放",[ADInfo objectForKey:ADInfoKEYADID]]];
-        
-    }else{
-        
-        [self outputMessage:[NSString stringWithFormat:@"广告 ID:%@ 跳过播放",[ADInfo objectForKey:ADInfoKEYADID]]];
-        
-    }
-    
-    NSString *message =  [ NSString stringWithFormat:@"centrixLinkADVideoPlayFinishedAD %@", ADInfo ];
-    
-    [self outputMessage:message];
-    
-}
+- (IBAction)restCache {
 
-- (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo
-{
-    if ([ADInfo objectForKey:@"error"]) {
-        
-        [self outputMessage:[ADInfo objectForKey:@"error"]];
-    }else{
-        
-        if ([[ADInfo objectForKey:ADInfoKEYIsClick] boolValue]) {
-            NSString *message =  @"当前广告被点击";
-            [self outputMessage:message];
-        }else
-        {
-            NSString *message =  @"当前有广告没有点击";
-            [self outputMessage:message];
-            
-        }
-        NSString *message =  [NSString stringWithFormat:@"centrixLinkADDidCloseAD %@", ADInfo ];
-        [self outputMessage:message];
-    }
-}
-
-- (IBAction)restCache
-{
-    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
-    
-    SEL fun = NSSelectorFromString(@"resetPreloadCache");
-    if (fun) {
-        [self outputMessage:@"restPreoload"];
-        [manager performSelector:fun];
-    }
-    [self outputMessage:@"resetPreloadCache"];
 
 }
 
@@ -140,7 +103,7 @@
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
-    if(manager.isShowableAD)
+    if([manager hasPreloadAD])
     {
         //manager.hasPreloadAD可预先判断是否有有效预加载广告
         if (manager.hasPreloadAD) {
@@ -148,16 +111,8 @@
         }else{
             [self outputMessage:@"当前无有效的预加载广告"];
         }
-         //插屏显示，如全屏显示则NO
-        BOOL isInterstitialShow = NO;
         
-        //是否只显示预加载广告,如果允许显示实时广告则为NO
-        BOOL isOnlyPreloadADShow = YES;
-       
-        //是否自动关闭EndCard，防止用户跳出后游戏自动恢复状态
-        BOOL isAutoCloseEndCard = NO;
-        
-        [manager showAD:self options:@{ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow], ShowADOptionKeyAutoCloseADView:[NSNumber numberWithBool:isAutoCloseEndCard]} error:&error];
+        [manager playAD:self options:nil error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }
@@ -174,29 +129,14 @@
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
     
-    if(manager.isShowableAD)
-    {
+    if([manager hasPreloadAD]) {
         //manager.hasPreloadAD可预先判断是否有有效预加载广告
-        if (manager.hasPreloadAD) {
-            [self outputMessage:@"当前存在有效的预加载广告"];
-        }else{
-            [self outputMessage:@"当前无有效的预加载广告"];
-        }
-        //插屏显示，如全屏显示则NO
-        BOOL isInterstitialShow = YES;
-        
-        //是否只显示预加载广告,如果允许显示实时广告则为NO
-        BOOL isOnlyPreloadADShow = YES;
-        //是否自动关闭EndCard，防止用户跳出后游戏自动恢复状态
-        BOOL isAutoCloseEndCard = NO;
-        
-        
         NSDictionary *positionDict = @{
-                                       K_AD_INTERSTITIAL_TOP:@(0.2),
-                                       K_AD_INTERSTITIAL_LEFT:@(0.2),
-                                       K_AD_INTERSTITIAL_VIDEOSCALE:@(0.8)
+                                       K_AD_RESIZEVIDEO_TOP:@(0.2),
+                                       K_AD_RESIZEVIDEO_LEFT:@(0.2),
+                                       K_AD_RESIZEVIDEO_VIDEOSCALE:@(0.8)
                                        };
-        [manager showAD:self options:@{ADInterstitialPosition:positionDict,ShowADOptionKeyInterstitialAD:[NSNumber numberWithBool:isInterstitialShow],ShowADOptionKeyOnlyPreload:[NSNumber numberWithBool:isOnlyPreloadADShow],ShowADOptionKeyAutoCloseADView:[NSNumber numberWithBool:isAutoCloseEndCard]} error:&error];
+        [manager playUnFullScreenAD:self options:@{ADRESIZEVIDEOPosition:positionDict} error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }

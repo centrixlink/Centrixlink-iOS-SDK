@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "Centrixlink-iOS"
-s.version          = "2.2.0"
+s.version          = "2.3.0"
 s.summary          = "Centrixlink's iOS SDK'"
 
 # This description is used to generate tags and improve search results.
@@ -28,9 +28,10 @@ s.platform     = :ios, '7.0'
 s.requires_arc = true
 
 s.source           = { :git => "https://github.com/Centrixlink/Centrixlink-iOS-SDK.git", :tag => "#{s.version}" }
+s.resources = "Resources/*.bundle"
 s.vendored_frameworks = 'Centrixlink.embeddedframework/Centrixlink.framework'
 s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
 s.frameworks = 'AdSupport', 'AudioToolbox', 'AVFoundation', 'CFNetwork', 'Foundation', 'MediaPlayer', 'StoreKit', 'SystemConfiguration', 'UIKit'
-s.libraries = 'z', 'stdc++'
+s.libraries = 'z', 'stdc++', 'sqlite3'
 end

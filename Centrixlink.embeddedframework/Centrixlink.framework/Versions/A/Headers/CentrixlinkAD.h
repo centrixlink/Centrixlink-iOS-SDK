@@ -12,28 +12,21 @@
 #import "CentrixlinkProtocol.h"
 #import "CLSLog.h"
 
-
-
 NS_ASSUME_NONNULL_BEGIN
 
 @class UIViewController;
 
-
-typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
-
-
+typedef void (^CentrixLinkADDebugCallBack)(NSString *message, CLSLogLevel level);
 
 @interface CentrixlinkAD : NSObject
 
-/**   代理
- *
- */
 @property (nonatomic, weak) id<CentrixLinkADDelegate>delegate;
-
 
 @property (nonatomic, weak) id<CentrixLinkSplashADDelegate>splashADdelegate;
 
-@property (nonatomic, assign) NSInteger fetchDelay;
+
+
+
 /**
  *   单例
  *
@@ -42,26 +35,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 + (CentrixlinkAD *)sharedInstance;
 
-
-
 + (NSString *)SDKVersion;
-/**
- *   启动SDK方法
- *
- *  @param appID        申请的APPID KEY 字符串
- *  @param AppSecretKey 申请的AppSecretkey 字符串
- *  @param error        成功返回nil, 失败返回Error信息
- */
-- (BOOL)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
-
-
-/**
- *   检查当前是否可以显示广告包括实时广告及预加载广告
- *   每次播放广告前请进行判断，防止无广告显示。
- *   @return true 可以播放广告，false 暂时不能播放广告；
- */
-- (BOOL)isShowableAD;
-
 
 /**
  *  是否有效的预加载广告
@@ -72,8 +46,22 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
 
 
 /**
- 调整插屏的布局
+ 设置是否跟随应用方向
 
+ @param enable default = NO;
+ */
+- (void)setEnableFollowAppOrientation:(BOOL)enable;
+
+/**
+ 开屏广告
+ */
+- (BOOL)playSplashAD;
+
+
+
+/**
+ 调整插屏的布局
+ 
  (注意：所有参数均为百分比，取值范围:[0 1])
  
  @param top 上边距
@@ -82,9 +70,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  @return YES:可以调整、 NO:不可以调整
  */
 
-- (BOOL)resizeInterstitialADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
-
-
+- (BOOL)resizeADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
 
 /**
  *   播放广告
@@ -97,19 +83,20 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *
  *  @return true 成功播放，false 播放失败
  */
-- (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary *)options error:(NSError * __autoreleasing*)error;
+- (BOOL)playAD:(UIViewController *)ViewController options:(NSDictionary * __nullable)options error:(NSError * __autoreleasing*)error;
 
 
-
-
+- (BOOL)playUnFullScreenAD:(UIViewController *)ViewController options:(NSDictionary * __nullable)options error:(NSError * __autoreleasing*)error;
 
 
 /**
- 开屏广告
+ *   启动SDK方法
+ *
+ *  @param appID        申请的APPID KEY 字符串
+ *  @param AppSecretKey 申请的AppSecretkey 字符串
+ *  @param error        成功返回nil, 失败返回Error信息
  */
-- (BOOL)showSplashAD;
-
-
+- (BOOL)startWithAppID:(NSString *)appID AppSecretKey:(NSString *)AppSecretKey error:(NSError * __autoreleasing*)error;
 
 /**
  *   DeBug开关显示
@@ -124,7 +111,7 @@ typedef void (^CentrixLinkADDebugBlock)(NSString *message, CLSLogLevel level);
  *
  *  @param debugBlock debugBlock，若不设置则在Xcode debug中显示，
  */
-- (void)setDebugBlock:(CentrixLinkADDebugBlock)debugBlock;
+- (void)setDebugCallBack:(CentrixLinkADDebugCallBack)callBack;
 
 @end
 
