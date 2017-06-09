@@ -1,12 +1,12 @@
 PODS:
-  - Centrixlink-iOS (2.3.4)
+  - Centrixlink-iOS (2.3.0)
 
 DEPENDENCIES:
-  - Centrixlink-iOS (~> 2.3.4)
+  - Centrixlink-iOS (~> 2.3.0)
 
 SPEC CHECKSUMS:
-  Centrixlink-iOS: 7e2748d1ec814b619b556699a0c0253bc73fd78d
+  Centrixlink-iOS: 4a52d674ae25a05e6a3a5cf9d90e2350b948e09f
 
-PODFILE CHECKSUM: 832ecf8458d60078b574ef9ce3246c2e05cec4c6
+PODFILE CHECKSUM: 32fa8ef713bf5b8d19af12160677b4a506c5e770
 
 COCOAPODS: 1.2.1

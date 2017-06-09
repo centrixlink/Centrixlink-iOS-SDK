@@ -54,41 +54,39 @@
     [self.interButton setEnabled:hasPreload];
     [self.fullButton setEnabled:hasPreload];
     NSString *message =  [ NSString stringWithFormat:@"Preload Status %@ ", hasPreload?@"hasPreload": @"No Preload"];
-    [self outputMessage:message];
+//    [self outputMessage:message];
+    NSLog(@"%@", message);
 }
 
 - (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo {
     NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo \n";
-    [self outputMessage:message];
+//    [self outputMessage:message];
     NSLog(@"%@", message);
 }
 
 - (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo {
     NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo \n";
-    [self outputMessage:message];
+//    [self outputMessage:message];
     NSLog(@"%@", message);
     
 }
 
 - (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo {
     NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo \n";
-    
-    
-    
-    [self outputMessage:message];
+//    [self outputMessage:message];
     NSLog(@"%@", message);
 }
 
 - (void)centrixLinkVideoADAction:(NSDictionary *)ADInfo {
     NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADAction:(NSDictionary *)ADInfo \n";
-    [self outputMessage:message];
+//    [self outputMessage:message];
     NSLog(@"%@", message);
 }
 
 
 - (void)centrixLinkVideoADShowFail:(NSError *)error {
     NSString *message =  [NSString stringWithFormat:@" ***CallBack*** \n - (void)centrixLinkVideoADShowFail:(NSError *)error %@\n", error];
-    [self outputMessage:message];
+//    [self outputMessage:message];
     NSLog(@"%@", message);
 }
 
@@ -103,15 +101,8 @@
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
-    if([manager hasPreloadAD])
-    {
+    if([manager hasPreloadAD]) {
         //manager.hasPreloadAD可预先判断是否有有效预加载广告
-        if (manager.hasPreloadAD) {
-            [self outputMessage:@"当前存在有效的预加载广告"];
-        }else{
-            [self outputMessage:@"当前无有效的预加载广告"];
-        }
-        
         [manager playAD:self options:nil error:&error];
         if (error) {
             [self outputMessage:[error description]];

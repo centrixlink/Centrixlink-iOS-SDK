@@ -80,10 +80,10 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "Centrixlink-iOS/Resource/CLBundle.bundle"
+  install_resource "Centrixlink-iOS/Resources/CLBundle.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "Centrixlink-iOS/Resource/CLBundle.bundle"
+  install_resource "Centrixlink-iOS/Resources/CLBundle.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

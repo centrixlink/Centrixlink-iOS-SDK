@@ -14,20 +14,20 @@
 
 /* Begin PBXFileReference section */
 		01B14F9970A325EEAC7161D94894A962 /* Pods-CentrixlinkDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CentrixlinkDemo-resources.sh"; sourceTree = "<group>"; };
+		0A96A3CCFAEA841A87401CBF7445AC18 /* Centrixlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Centrixlink.framework; path = Centrixlink.embeddedframework/Centrixlink.framework; sourceTree = "<group>"; };
 		28782F54D1E21F061474D6E7C3C6CB2D /* Pods-CentrixlinkDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CentrixlinkDemo-frameworks.sh"; sourceTree = "<group>"; };
 		2BFDDE6A0B58027BAD3A94DCAE567113 /* Pods-CentrixlinkDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CentrixlinkDemo.modulemap"; sourceTree = "<group>"; };
 		49E4671B2FE7779CE40E5D329E1B7D02 /* Pods-CentrixlinkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CentrixlinkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		50D82B4CE3E26A26FDA301612A9BF4B2 /* Pods_CentrixlinkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CentrixlinkDemo.framework; path = "Pods-CentrixlinkDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52271A3BFC2CB67B6108AF73C8AC071B /* Pods-CentrixlinkDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CentrixlinkDemo-umbrella.h"; sourceTree = "<group>"; };
+		5FDE01AB865B48C352202EAACCA18A42 /* CLBundle.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = CLBundle.bundle; path = Resources/CLBundle.bundle; sourceTree = "<group>"; };
 		658FC9A16A6D352E908DA560AB4AF991 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6BC38722BC0C12DD3F3D63E5536DFE58 /* Centrixlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Centrixlink.framework; sourceTree = "<group>"; };
 		7F34201A78BC48975AD0FCB36FB060E5 /* Pods-CentrixlinkDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CentrixlinkDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		8EF2C6A45F5E10FFE435F87AE91CB55D /* Pods-CentrixlinkDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CentrixlinkDemo-dummy.m"; sourceTree = "<group>"; };
 		92AAF6C9249A35726047BF593C2CC33D /* Pods-CentrixlinkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CentrixlinkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BA170FF591521676D9B4BB846C44B924 /* Pods-CentrixlinkDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CentrixlinkDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CE455DC326257AA8CFFFA72E05BA6849 /* CLBundle.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = CLBundle.bundle; path = Resource/CLBundle.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,10 +42,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		167EAD8DEF282A98407AE9FB7023E254 /* Frameworks */ = {
+		00EB6C9B428688ED13F47642C45BB30A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6BC38722BC0C12DD3F3D63E5536DFE58 /* Centrixlink.framework */,
+				0A96A3CCFAEA841A87401CBF7445AC18 /* Centrixlink.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -66,6 +66,14 @@
 			);
 			name = "Pods-CentrixlinkDemo";
 			path = "Target Support Files/Pods-CentrixlinkDemo";
+			sourceTree = "<group>";
+		};
+		5C65A5A890E07A83BDEC14D3A6D09D38 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5FDE01AB865B48C352202EAACCA18A42 /* CLBundle.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		6FC4A92F619CD9AF08D42B27D9FAEBB4 /* Products */ = {
@@ -98,8 +106,8 @@
 		AFEF8C6C5E35C155E2AFC7F9939D7B78 /* Centrixlink-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				167EAD8DEF282A98407AE9FB7023E254 /* Frameworks */,
-				FA95556440299F0C8D409F8A32BBA0D7 /* Resources */,
+				00EB6C9B428688ED13F47642C45BB30A /* Frameworks */,
+				5C65A5A890E07A83BDEC14D3A6D09D38 /* Resources */,
 			);
 			name = "Centrixlink-iOS";
 			path = "Centrixlink-iOS";
@@ -127,14 +135,6 @@
 				AFEF8C6C5E35C155E2AFC7F9939D7B78 /* Centrixlink-iOS */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		FA95556440299F0C8D409F8A32BBA0D7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CE455DC326257AA8CFFFA72E05BA6849 /* CLBundle.bundle */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
