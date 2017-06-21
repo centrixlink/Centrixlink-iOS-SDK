@@ -18,8 +18,12 @@
 
 @implementation AppDelegate
 
+const NSString *  App_ID = @"CL_APP_ID";
+const NSString * App_Key = @"CL_APP_KEY";
 
-
+/* 实际开发中请使用自己申请的AppID 和 AppSecretKey */
+const NSString *  Default_App_ID = @"ECbUXI7E5l";
+const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/yohc/9kWa0cfmMo1DTGM4rUmRyZ7WcKyhJZZNH8tiFY9i32FGMN8x4QT2hr2iiPfzizRkGfYoG+++9wAAWHhobu2cZ+dIcBTwayDFY4OJo6k592YFbyDa9mwuirgb0fRGtWY3WzvI5oaigZnv9EFjRVdr1omLk10azYNcwQIDAQAB";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -28,10 +32,22 @@
     
     NSError *error;
     
-    [[CentrixlinkAD sharedInstance] startWithAppID:@"app id" AppSecretKey:@"app key" error:nil];
+    extern NSString *App_ID;
+    extern NSString *App_Key;
     
+    NSString *appId = [[NSUserDefaults standardUserDefaults] objectForKey:App_ID];
+    NSString *appKey = [[NSUserDefaults standardUserDefaults] objectForKey:App_Key];
+    if (appId.length && appKey.length) {
+        //
+    }else {
+        extern NSString *Default_App_ID;
+        extern NSString *Default_App_Key;
+        appId = Default_App_ID;
+        appKey = Default_App_Key;
+    }
     
-
+    [[CentrixlinkAD sharedInstance] startWithAppID:appId AppSecretKey:appKey error:nil];
+    
     if (error) {
         NSLog(@"startWithAppID Error %@",error);
     }else {

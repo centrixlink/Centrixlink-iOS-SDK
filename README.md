@@ -102,13 +102,21 @@ end
 * AppDelegate.m:
 
 ```objc
+
+
+
 - (BOOL)application:(UIApplication *)application 
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    //开启debug
     [[CentrixlinkAD sharedInstance] setDebugEnable:YES]; 
     //激活SDK
     NSError *error;
-    [[CentrixlinkAD sharedInstance] startWithAppID:@"Your AppID Here" AppSecretKey:@"Your SecretKey Here" error:&error];
+    
+    NSString *  Default_App_ID = @"ECbUXI7E5l";
+    NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/yohc/9kWa0cfmMo1DTGM4rUmRyZ7WcKyhJZZNH8tiFY9i32FGMN8x4QT2hr2iiPfzizRkGfYoG+++9wAAWHhobu2cZ+dIcBTwayDFY4OJo6k592YFbyDa9mwuirgb0fRGtWY3WzvI5oaigZnv9EFjRVdr1omLk10azYNcwQIDAQAB";
+    
+    /* 实际开发中请务必使用自己申请的AppID 和 AppSecretKey */
+    [[CentrixlinkAD sharedInstance] startWithAppID:Default_App_ID AppSecretKey:Default_App_Key error:&error];
         if(error){
            NSLog(@"start Error %@", error);
         }else{

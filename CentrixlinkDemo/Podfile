@@ -1,0 +1,10 @@
+
+platform :ios, '7.0'
+
+target 'CentrixlinkDemo' do
+  
+  use_frameworks!
+
+  pod 'Centrixlink-iOS', '2.3.0'
+
+end

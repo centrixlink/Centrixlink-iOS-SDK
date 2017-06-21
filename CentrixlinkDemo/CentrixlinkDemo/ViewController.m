@@ -10,12 +10,20 @@
 #import <Centrixlink/Centrixlink.h>
 #import "AppDelegate.h"
 @interface ViewController ()<CentrixLinkADDelegate>
-@property (nonatomic, weak) IBOutlet UITextView *textView;
+
 @property (nonatomic, weak) IBOutlet UIButton *resetButton;
 @property (nonatomic, weak) IBOutlet UIButton *fullButton;
 @property (nonatomic, weak) IBOutlet UIButton *interButton;
+@property (weak, nonatomic) IBOutlet UITextField *appIDTextField;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UITextField *appKeyTextField;
 
 @end
+
+
+
+
+
 
 @implementation ViewController
 
@@ -26,7 +34,17 @@
     [self.interButton setEnabled:NO];
     [self.fullButton setEnabled:NO];
 
-    AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+    
+    extern NSString *App_ID;
+    extern NSString *Default_App_ID;
+    NSString *appId = [[NSUserDefaults standardUserDefaults] objectForKey:App_ID];
+    if ([appId isEqualToString:Default_App_ID]) {
+        self.label.text = @"当前正在使用: 默认AppID & AppKey";
+    }else {
+        self.label.text = @"当前正在使用: Yout AppID & AppKey";
+    }
+    
+    
     [[CentrixlinkAD sharedInstance] setDelegate:self];
     
     [[CentrixlinkAD sharedInstance] setDebugCallBack:^(NSString *message, CLSLogLevel level) {
@@ -35,16 +53,8 @@
 }
 
 
--(void)outputMessage:(NSString *)message
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.textView setEditable:YES];
-        NSString *str = [message stringByAppendingString:@"\n----------\n"];
-        [self.textView  setText:[[_textView text] stringByAppendingString:str]];
-        [self.textView  setEditable:NO];
-        [self.textView scrollRangeToVisible:NSMakeRange([[_textView text] length], 0)];
-
-    });
+-(void)outputMessage:(NSString *)message {
+   
 }
 
 #pragma mark ----CentrixlinkDelegate
@@ -91,9 +101,8 @@
 }
 
 
-- (IBAction)restCache {
-
-
+- (IBAction)localList:(id)sender {
+    
 }
 
 -(IBAction)ADClick:(id)sender
@@ -136,6 +145,50 @@
         [self outputMessage:@"广告没有准备好"];
     }
 }
+
+
+- (IBAction)userAppIdAction:(id)sender {
+    extern NSString *App_ID;
+    extern NSString *App_Key;
+    
+    NSString *appId = self.appIDTextField.text;
+    NSString *appKey = self.appKeyTextField.text;
+    if (appId.length && appKey.length) {
+        
+        self.label.text = @"当前正在使用: Yout AppID & AppKey";
+        
+        [[NSUserDefaults standardUserDefaults] setObject:appId forKey:App_ID];
+        [[NSUserDefaults standardUserDefaults] setObject:appKey forKey:App_Key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[CentrixlinkAD sharedInstance] startWithAppID:appId AppSecretKey:appKey error:nil];
+        
+    }else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"appID Or appKey error" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"ok", nil];
+        [alertView show];
+    }
+}
+
+- (IBAction)defaultAppIdAction:(id)sender {
+    
+    extern NSString *App_ID;
+    extern NSString *App_Key;
+
+    extern NSString *Default_App_ID;
+    extern NSString *Default_App_Key;
+    
+    self.label.text = @"当前正在使用: 默认AppID & AppKey";
+    
+    [[NSUserDefaults standardUserDefaults] setObject:Default_App_ID forKey:App_ID];
+    [[NSUserDefaults standardUserDefaults] setObject:Default_App_Key forKey:App_Key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[CentrixlinkAD sharedInstance] startWithAppID:Default_App_ID AppSecretKey:Default_App_Key error:nil];
+    
+}
+
+
+
 
 
 - (void)didReceiveMemoryWarning {
