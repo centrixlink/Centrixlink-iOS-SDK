@@ -136,7 +136,7 @@
                                        K_AD_RESIZEVIDEO_LEFT:@(0.2),
                                        K_AD_RESIZEVIDEO_VIDEOSCALE:@(0.8)
                                        };
-        [manager playUnFullScreenAD:self options:@{ADRESIZEVIDEOPosition:positionDict} error:&error];
+        [manager playUnFullScreenAD:self options:nil error:&error];
         if (error) {
             [self outputMessage:[error description]];
         }
