@@ -23,6 +23,8 @@ UIKIT_EXTERN NSString *const DOWNLOADED_FILE_TABLE;
 UIKIT_EXTERN NSString *const BURYINGPOINT_TABLE;
 /* ADRequestTable */
 UIKIT_EXTERN NSString *const REQUEST_TABLE;
+/* trackingUrl */
+UIKIT_EXTERN NSString *const TRACKING_EVENT_TABLE;
 
 
 UIKIT_EXTERN NSString *const CL_HTTP_HEADER_UUID;
@@ -48,6 +50,10 @@ UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_VIDEOSCALE;
 
 UIKIT_EXTERN NSString *const SDK_VERSION;
 
+UIKIT_EXTERN NSString *const REQUEST_ID;
+
+UIKIT_EXTERN NSString *const ZP_REQUEST_ID;
+
 #pragma Delegate 回调字典KEY
 /**
  *  广告Key
@@ -57,7 +63,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYADID;
 /**
  *  是否是缓存广告
  */
-UIKIT_EXTERN NSString *const ADInfoKEYPreloadStatus;
+//UIKIT_EXTERN NSString *const ADInfoKEYPreloadStatus;
 /**
  *  视频播放状态，true 为广告播放完毕，false为广告跳过
  */
@@ -68,6 +74,12 @@ UIKIT_EXTERN NSString *const ADInfoKEYADPlayStatus;
  * 视频广告是否被点击，true 点击，false 未点击
  */
 UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
+
+/**
+ * 视频广告是否跳过
+ */
+
+UIKIT_EXTERN NSString *const ADInfoKEYIsSkip;
 
 
 /**

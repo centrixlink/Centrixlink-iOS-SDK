@@ -46,36 +46,30 @@ typedef void (^CentrixLinkADDebugCallBack)(NSString *message, CLSLogLevel level)
 
 
 /**
- 设置是否跟随应用方向
-
- @param enable default = NO;
+ *  设置是否跟随应用方向
+ *
+ *  @param enable default = NO;
  */
 - (void)setEnableFollowAppOrientation:(BOOL)enable;
 
 /**
- 开屏广告
+ *  开屏广告
  */
 - (BOOL)playSplashAD;
 
 
 
 /**
- 调整插屏的布局
- 
- (注意：所有参数均为百分比，取值范围:[0 1])
- 
- @param top 上边距
- @param left 左边距
- @param videoScale 短边占比(例如：在竖屏模式下，指的是指定区域的宽占整个屏幕宽的比例，反之横屏模式下就是指定区域的高占整个屏幕高的比例)
- @return YES:可以调整、 NO:不可以调整
+ *  调整插屏的布局 (注意：所有参数均为百分比，取值范围:[0 1])
+ *  @param top 上边距
+ *  @param left 左边距
+ *  @param videoScale 短边占比(例如：在竖屏模式下，指的是指定区域的宽占整个屏幕宽的比例，反之横屏模式下就是指定区域的高占整个屏幕高的比例)
+ *  @return YES:可以调整、 NO:不可以调整
  */
-
 - (BOOL)resizeADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
 
 /**
- *   播放广告
- *
- *  (注意：这里可以指定播放区域的大小位置信息)
+ *   播放视频全屏广告
  *
  *  @param ViewController 当前显示页面ViewController对象
  *  @param options        自定义上传跟此次广告播放相关数据，便于跟踪广告及广告激励

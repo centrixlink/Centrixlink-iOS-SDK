@@ -49,9 +49,7 @@ const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/
         [[NSUserDefaults standardUserDefaults] setObject:Default_App_Key forKey:App_Key];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
     [[CentrixlinkAD sharedInstance] startWithAppID:appId AppSecretKey:appKey error:nil];
-    
     if (error) {
         NSLog(@"startWithAppID Error %@",error);
     }else {

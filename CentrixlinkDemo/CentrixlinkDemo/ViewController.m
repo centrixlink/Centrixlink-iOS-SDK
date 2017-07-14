@@ -85,6 +85,8 @@
     NSString *message =  @" ***CallBack*** \n - (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo \n";
 //    [self outputMessage:message];
     NSLog(@"%@", message);
+    
+    NSLog(@"close-ADInfo = %@", ADInfo);
 }
 
 - (void)centrixLinkVideoADAction:(NSDictionary *)ADInfo {
