@@ -202,59 +202,8 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     }
   }
 ```
-#### 3.4 非全屏视频广告位置自定义
 
-```objc
-/*
-    当使用非全屏视频广告功能并自定义位置时可以在参数options中加入自定义的位置信息：
-*/
-
-//其中0.2、0.2、0.8分别表示距离上边距20%、左边距20%、最短边所占比例80%(最短边表示在竖屏模式下视频播放窗口宽度占屏幕宽的比例，横屏模式下视频播放窗口高度占屏幕高的比例)。
-NSDictionary *positionDict = @{
-                                K_AD_INTERSTITIAL_TOP:@(0.2),
-                                K_AD_INTERSTITIAL_LEFT:@(0.2),
-                                K_AD_INTERSTITIAL_VIDEOSCALE:@(0.8)
-                            };
-
-CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
-//option:参数为NSDictionary,方便以后扩展参数。如果不穿options=nil,则非全屏视频广告为默认居中显示
-[manager playUnFullScreenAD:self options:@{ADRESIZEVIDEOPosition:positionDict} error:&error];
-if (error) {
-    NSLog(@"%@",error);            
-}
-
-```
-#### 3.5 修改非全屏视频广告位置
-```objc
-/**
- 调整非全屏视频广告的布局
- (注意：所有参数均为百分比
-       top\left取值范围:[0 1)
-       videoScale取值范围:(0 1]
-
- @param top 上边距
- @param left 左边距
- @param videoScale 短边占比(例如：在竖屏模式下，指的是视频播放窗口宽度占屏幕宽的比例，反之横屏模式下就是视频播放窗口高度占屏幕高的比例)
- */
-- (BOOL)resizeADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
-
-//可以通过该接口修改非全屏视频广告广告的位置信息，例如可以在监听手机转屏的方法中修改横屏和竖屏模式下非全屏展示的位置和比例。
-- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
-    [coordinator animateAlongsideTransition:^(id <UIViewControllerTransitionCoordinatorContext> context) {
-        if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
-            //横屏
-            [[CentrixlinkAD sharedInstance] resizeADWithTop:0 left:0 videoScale:1];
-        }else {
-            //竖屏
-            [[CentrixlinkAD sharedInstance] resizeADWithTop:0.2 left:0.2 videoScale:0.8];
-        }
-    } completion:nil];
-}
-
-```
-
-#### 3.6 设置视频广告显示方向是否跟随应用方向
+#### 3.4 设置视频广告显示方向是否跟随应用方向
 
 ```objc
 /**
@@ -345,5 +294,3 @@ if (error) {
 }
 
 ```
-
-
