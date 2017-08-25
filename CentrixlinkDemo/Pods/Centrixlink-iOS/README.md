@@ -5,21 +5,21 @@ iOS7+ 版本
 
 ### 准备工作
 
-#### 自动操作
-Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下代码并重新运行pod install命令即可。
+#### Cocoapods管理
+Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下代码并运行pod install命令即可。
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-    pod 'Centrixlink-iOS', '~> 2.3.0'
+    pod 'Centrixlink-iOS', '~> 2.4.0'
 end
 ```
 
 #### 手动操作
-1.  从官网下载Centrixlink_iOS_SDK.zip文件。
-2.  解压缩Centrixlink框架(Centrixlink.embeddedframework)，并添加到XCode项目中。
+1.  从官网下载[Centrixlink_iOS_SDK](https://github.com/centrixlink/Centrixlink-iOS-SDK)文件。
+2.  解压缩Centrixlink框架(Centrixlink.embeddedframework/Cntrixlink.framework)，并添加到XCode项目中。
 3.  添加以下依赖库:
  
 	```
@@ -49,46 +49,7 @@ end
 
 ## 集成说明
 
-### 集成版本变更指导
-
-#### 1. 代理方法变更
-
-##### 1.1 视频广告代理变更
-
-|  | Before 2.3 | 2.3 |
-| --- | --- | --- |
-|视频预加载状态</br>本地是否有预加载的广告| -(void)centrixLinkADPreloadADStatusChange:(BOOL)hasPreload; | -(void)centrixLinkHasPreloadAD:(BOOL)hasPreload; |  
-|视频广告数据已经准备完毕</br>即将开始展示| - (void)centrixLinkADWillShowAD:(NSDictionary *)ADInfo; | - (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo; |  
-|视频广告页面已经展示| - (void)centrixLinkADDidShowAD:(NSDictionary *)ADInfo; | - (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo; |  
-|视频广告视频播放完毕状态| - (void)centrixLinkADVideoDidPlayStatus:(NSDictionary *)ADInfo; | （无） |  
-|视频广告展示即将关闭| - (void)centrixLinkADWillCloseAD:(NSDictionary *)ADInfo; | （无）  |  
-|视频广告展示已关闭| - (void)centrixLinkADDidCloseAD:(NSDictionary *)ADInfo; | - (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo |  
-|视频广告展示出错| （无） | - (void)centrixLinkVideoADShowFail:(NSError *)error; |  
-
-##### 1.2 开屏广告代理变更
-
-|  | Before 2.3 | 2.3 |
-| --- | --- | --- |
-| 开屏广告显示成功 | -(void)splashSuccessPresentScreen:(NSDictionary *)splashADInfo | - (void)centrixlinkSplashADDidShow:(NSDictionary *)info; |
-| 开屏广告关闭 | -(void)splashAdClosed:(NSDictionary *)splashADInfo | - (void)centrixlinkSplashADClosed:(NSDictionary *)info; | 
-|开屏广告触发了点击事件| -(void)splashAdClicked:(NSDictionary *)splashADInfo |  (void)centrixlinkSplashADAction:(NSDictionary *)info;| 
-|开屏广告显示失败</br>具体参考error code | -(void)splashFailPresentScreen:(NSDictionary *)splashADInfo error:(NSError *)error | - (void)centrixlinkSplashADShowFail:(NSError *)error; | 
-| 开屏广告跳过 | 无 | - (void)centrixlinkSplashADSkip:(NSDictionary *)info; |
-
-##### 1.3 接口变更
-
-|   | Before 2.3 | 2.3 |
-| --- | --- | --- |
-| 显示开屏广告 | - (BOOL) showSplashAD; | - (BOOL)playSplashAD; |
-| 调整非全屏视频广告的位置 | - (BOOL) resizeInterstitialADWithTop:(float)top left:(float)left videoScale:(float)videoScale; | - (BOOL)resizeADWithTop:(float)top left:(float)left videoScale:(float)videoScale; |
-| 显示视频广告 | - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary * __nullable)options error:(NSError * __autoreleasing*)error; | - (BOOL)playAD:(UIViewController *)ViewController options:(NSDictionary * __nullable)options error:(NSError * __autoreleasing*)error; |
-| 显示非全屏视频广告 | - (BOOL)showAD:(UIViewController *)ViewController options:(NSDictionary * __nullable)options error:(NSError * __autoreleasing*)error; | - (BOOL)playUnFullScreenAD:(UIViewController *)ViewController options:(NSDictionary * __nullable)options error:(NSError * __autoreleasing*)error; |
-| 设置视频广告是否跟随应用方向 | 无 | - (void)setEnableFollowAppOrientation:(BOOL)enable; |
-
-
-
-
-### 2. 添加头文件 
+### 1. 添加头文件 
 * AppDelegate.h:
 
 ```objc
@@ -97,7 +58,7 @@ end
 
 
 
-### 3. 激活SDK
+### 2. 激活SDK
 
 * AppDelegate.m:
 
@@ -108,7 +69,12 @@ end
     [[CentrixlinkAD sharedInstance] setDebugEnable:YES]; 
     //激活SDK
     NSError *error;
-    [[CentrixlinkAD sharedInstance] startWithAppID:@"Your AppID Here" AppSecretKey:@"Your SecretKey Here" error:&error];
+    
+    NSString *  Default_App_ID = @"ECbUXI7E5l";
+    NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/yohc/9kWa0cfmMo1DTGM4rUmRyZ7WcKyhJZZNH8tiFY9i32FGMN8x4QT2hr2iiPfzizRkGfYoG+++9wAAWHhobu2cZ+dIcBTwayDFY4OJo6k592YFbyDa9mwuirgb0fRGtWY3WzvI5oaigZnv9EFjRVdr1omLk10azYNcwQIDAQAB";
+    
+    /* 实际开发中请务必使用自己申请的AppID 和 AppSecretKey */
+    [[CentrixlinkAD sharedInstance] startWithAppID:Default_App_ID AppSecretKey:Default_App_Key error:&error];
         if(error){
            NSLog(@"start Error %@", error);
         }else{
@@ -118,9 +84,9 @@ end
 ```
 
 
-###  4. 添加代码到展示视频广告的ViewController中
+### 3. 添加代码到展示视频广告的ViewController中
 
-#### 4.1 添加代理
+#### 3.1 添加代理
 ```objc
 - (void)viewDidLoad{
   //设置代理（广告代理）
@@ -128,20 +94,17 @@ end
   }
 ```
 
-#### 4.2 跟踪视频广告展示添加相关委托接口
+#### 3.2 跟踪视频广告展示添加相关委托接口
 
 ```objc
 /**
- *  广告Key
+ *  广告adId
  */
 UIKIT_EXTERN NSString *const ADInfoKEYADID;
 
+
 /**
- *  是否有缓存视频广告
- */
-UIKIT_EXTERN NSString *const ADInfoKEYPreloadStatus;
-/**
- *  视频广告播放状态，true为视频广告播放完毕，false为视频广告跳过
+ *  视频广告播放状态，true为视频广告完整播放，false为视频广告非完整播放
  */
 UIKIT_EXTERN NSString *const ADInfoKEYADPlayStatus;
 
@@ -166,7 +129,9 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
  
  
 - (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo {
-      NSLog(@"视频广告数据已经准备完毕，即将开始展示；请保存当前应用或游戏状态");
+    //广告资源ID
+    NSString *adid = [ADInfo objectForKey:ADInfoKEYADID];
+    NSLog(@"视频广告数据已经准备完毕，即将开始展示；请保存当前应用或游戏状态");
 }
 
 
@@ -176,7 +141,9 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
  *  @param ADInfo 视频广告信息
  */
 - (void)centrixLinkVideoADDidShow:(NSDictionary *)ADInfo {
-      NSLog(@"视频广告页面已经展示");
+    //广告资源ID
+    NSString *adid = [ADInfo objectForKey:ADInfoKEYADID];
+    NSLog(@"视频广告页面已经展示");
 }
 
 /**
@@ -186,15 +153,12 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
  */
  
 - (void)centrixLinkVideoADClose:(NSDictionary *)ADInfo {
-    
-    if ([[ADInfo objectForKey:ADInfoKEYIsClick] boolValue]) {
-        NSString *message =  @"视频广告被点击";
-        NSLog(@"%@",message);
-    }
-    
-    NSString adid = [ADInfo objectForKey:ADInfoKEYADID];
-    NSLog(@"广告资源ID：%@",adid);
-
+    //广告资源ID
+    NSString *adid = [ADInfo objectForKey:ADInfoKEYADID];
+    //是否有点击事件
+    BOOL isClick = [[ADInfo objectForKey:ADInfoKEYIsClick] boolValue];
+    //是否完整播放
+    BOOL isplayFinished = [ADInfo objectForKey:ADInfoKEYADPlayStatus];
     //详细信息
     NSLog(@"ADInfo: %@",ADInfo);
     
@@ -210,18 +174,16 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     /* code
     100	广告的播放间隔时间不满足条件
     101	本地没有可播放广告
-    102	服务端接口返回错误
-    103	服务端返回数据类型错误
-    104	服务端接口响应超时
     105	当前正在播放其它广告
     106	处于静默状态
+    108	当前用户播放超限
     */
 }
 
 
 ```
 
-#### 4.3 展示视频广告
+#### 3.3 展示视频广告
     
 ```objc
 //只展示预加载视频广告
@@ -240,7 +202,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     }
   }
 ```
-#### 4.4 非全屏视频广告位置自定义
+#### 3.4 非全屏视频广告位置自定义
 
 ```objc
 /*
@@ -262,7 +224,7 @@ if (error) {
 }
 
 ```
-#### 4.5 修改非全屏视频广告位置
+#### 3.5 修改非全屏视频广告位置
 ```objc
 /**
  调整非全屏视频广告的布局
@@ -292,7 +254,7 @@ if (error) {
 
 ```
 
-#### 4.6 设置视频广告显示方向是否跟随应用方向
+#### 3.6 设置视频广告显示方向是否跟随应用方向
 
 ```objc
 /**
@@ -303,9 +265,9 @@ if (error) {
 - (void)setEnableFollowAppOrientation:(BOOL)enable;
 ```
 
-### 5 开屏图片广告相关接口
+### 4 开屏图片广告相关接口
 
-#### 5.1 设置开屏图片广告代理委托及加载开屏图片广告
+#### 4.1 设置开屏图片广告代理委托及加载开屏图片广告
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -318,7 +280,7 @@ if (error) {
 }
 
 ```
-#### 5.2 跟踪开屏图片广告展示添加相关委托接口
+#### 4.2 跟踪开屏图片广告展示添加相关委托接口
 
 ```objc
 /**
@@ -326,7 +288,16 @@ if (error) {
 
  @param info
  */
-- (void)centrixlinkSplashADClosed:(NSDictionary *)info;
+- (void)centrixlinkSplashADClosed:(NSDictionary *)info {
+    //广告资源ID
+    NSString *adid = [info objectForKey:ADInfoKEYADID];
+    //是否有点击事件
+    BOOL isClick = [[info objectForKey:ADInfoKEYIsClick] boolValue];
+    //是否跳过
+    BOOL isSkip = [[info objectForKey:ADInfoKEYIsSkip] boolValue];
+    //是否完整播放
+    BOOL isplayFinished = [info objectForKey:ADInfoKEYADPlayStatus];
+}
 
 
 /**
@@ -334,7 +305,10 @@ if (error) {
 
  @param info
  */
-- (void)centrixlinkSplashADDidShow:(NSDictionary *)info;
+- (void)centrixlinkSplashADDidShow:(NSDictionary *)info {
+    //广告资源ID
+    NSString *adid = [info objectForKey:ADInfoKEYADID];
+}
 
 
 /**
@@ -342,7 +316,10 @@ if (error) {
 
  @param info
  */
-- (void)centrixlinkSplashADSkip:(NSDictionary *)info;
+- (void)centrixlinkSplashADSkip:(NSDictionary *)info {
+    //广告资源ID
+    NSString *adid = [info objectForKey:ADInfoKEYADID];
+}
 
 
 /**
@@ -350,7 +327,10 @@ if (error) {
 
  @param info
  */
-- (void)centrixlinkSplashADAction:(NSDictionary *)info;
+- (void)centrixlinkSplashADAction:(NSDictionary *)info {
+    //广告资源ID
+    NSString *adid = [info objectForKey:ADInfoKEYADID];
+}
 
 
 /**
@@ -358,13 +338,11 @@ if (error) {
 
  @param error 不同的error code对于不同的错误信息
  */
-- (void)centrixlinkSplashADShowFail:(NSError *)error;
-/*Error Code
-|200|开屏请求超时|
-|201|本地没有预加载的开屏广告|
-|202|开屏广告接口请求错误|
-|203|要播放的开屏广告和本地预加载的不一致|
-*/
+- (void)centrixlinkSplashADShowFail:(NSError *)error {
+    /*  Error Code
+        201 本地没有预加载的开屏广告
+    */
+}
 
 ```
 

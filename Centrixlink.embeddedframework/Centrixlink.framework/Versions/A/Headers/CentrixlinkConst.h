@@ -11,33 +11,21 @@
 
 @interface CentrixlinkConst : NSObject
 
-/* VideoADEventTable */
-UIKIT_EXTERN NSString *const VIDEO_EVENT_TABLE;
-/* SplashADEventTable */
-UIKIT_EXTERN NSString *const SPLASH_EVENT_TABLE;
-/* ADDownloadedTable */
-UIKIT_EXTERN NSString *const DOWNLOADED_AD_TABLE;
-/* ADFileTable */
-UIKIT_EXTERN NSString *const DOWNLOADED_FILE_TABLE;
-/* BuryingPointTable */
-UIKIT_EXTERN NSString *const BURYINGPOINT_TABLE;
-/* ADRequestTable */
-UIKIT_EXTERN NSString *const REQUEST_TABLE;
-/* trackingUrl */
-UIKIT_EXTERN NSString *const TRACKING_EVENT_TABLE;
-
-
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_UUID;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_VERSION;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_APPID;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_REQUESTID;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_OS;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_MODEL;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_OSVER;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_APPVER;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_BUNDLEID;
-UIKIT_EXTERN NSString *const CL_HTTP_HEADER_REPORT_REQUESTID;
-
+/**
+ *  扩展信息
+ */
+UIKIT_EXTERN NSString *const CentrixlinkSDKVersion;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyIECAutoClose;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyUser;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtraInfoDictionary;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra1;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra2;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra3;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra4;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra5;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra6;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra7;
+UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra8;
 
 
 
@@ -49,6 +37,8 @@ UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_VIDEOSCALE;
 
 
 UIKIT_EXTERN NSString *const SDK_VERSION;
+
+UIKIT_EXTERN NSString *const SDK_VER_CODE;
 
 UIKIT_EXTERN NSString *const REQUEST_ID;
 
@@ -124,18 +114,32 @@ UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationPortrait;
 UIKIT_EXTERN NSString *const CL_UIInterfaceOrientationPortraitUpsideDown;
 
 
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_UUID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_VERSION;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_APPID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_REQUESTID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_OS;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_MODEL;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_OSVER;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_APPVER;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_BUNDLEID;
+UIKIT_EXTERN NSString *const CL_HTTP_HEADER_REPORT_REQUESTID;
 
-/**
- *  其它扩展信息
- */
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtraInfoDictionary;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra1;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra2;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra3;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra4;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra5;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra6;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra7;
-UIKIT_EXTERN NSString *const ShowADOptionKeyExtra8;
+
+/* VideoADEventTable */
+UIKIT_EXTERN NSString *const VIDEO_EVENT_TABLE;
+/* SplashADEventTable */
+UIKIT_EXTERN NSString *const SPLASH_EVENT_TABLE;
+/* ADDownloadedTable */
+UIKIT_EXTERN NSString *const DOWNLOADED_AD_TABLE;
+/* ADFileTable */
+UIKIT_EXTERN NSString *const DOWNLOADED_FILE_TABLE;
+/* BuryingPointTable */
+UIKIT_EXTERN NSString *const BURYINGPOINT_TABLE;
+/* ADRequestTable */
+UIKIT_EXTERN NSString *const REQUEST_TABLE;
+/* trackingUrl */
+UIKIT_EXTERN NSString *const TRACKING_EVENT_TABLE;
+
 
 @end

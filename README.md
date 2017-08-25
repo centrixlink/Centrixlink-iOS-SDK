@@ -67,6 +67,10 @@ end
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    //开启debug
     [[CentrixlinkAD sharedInstance] setDebugEnable:YES]; 
+
+// 设置app
+    [[CentrixlinkAD sharedInstance] setAppOrientation:UIInterfaceOrientationMaskAll];
+
     //激活SDK
     NSError *error;
     

@@ -124,28 +124,8 @@
     }
 }
 
--(IBAction)interADClick:(id)sender
-{
+-(IBAction)interADClick:(id)sender {
     
-    //当前是否可以显示广告
-    CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
-    NSError *error;
-    
-    if([manager hasPreloadAD]) {
-        //manager.hasPreloadAD可预先判断是否有有效预加载广告
-        NSDictionary *positionDict = @{
-                                       K_AD_RESIZEVIDEO_TOP:@(0.2),
-                                       K_AD_RESIZEVIDEO_LEFT:@(0.2),
-                                       K_AD_RESIZEVIDEO_VIDEOSCALE:@(0.8)
-                                       };
-        [manager playUnFullScreenAD:self options:nil error:&error];
-        if (error) {
-            [self outputMessage:[error description]];
-        }
-        
-    }else{
-        [self outputMessage:@"广告没有准备好"];
-    }
 }
 
 
