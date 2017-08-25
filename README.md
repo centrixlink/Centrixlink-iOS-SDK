@@ -13,7 +13,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-    pod 'Centrixlink-iOS', '~> 2.4.0'
+    pod 'Centrixlink-iOS', '~> 2.4.1'
 end
 ```
 
@@ -65,15 +65,15 @@ end
 ```objc
 - (BOOL)application:(UIApplication *)application 
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-   //开启debug
+    //开启debug
     [[CentrixlinkAD sharedInstance] setDebugEnable:YES]; 
 
-// 设置app
-    [[CentrixlinkAD sharedInstance] setAppOrientation:UIInterfaceOrientationMaskAll];
+    //设置视频广告的展示方向(在调用startWithAppID:AppSecretKey:error:方法前调用该方法)
+    //orientation: 视频广告展示方向(UIInterfaceOrientationMaskPortrait / UIInterfaceOrientationMaskLandscape / UIInterfaceOrientationMaskAll = default)
+    [[CentrixlinkAD sharedInstance] setPlayAdOrientation:UIInterfaceOrientationMaskAll];
 
     //激活SDK
     NSError *error;
-    
     NSString *  Default_App_ID = @"ECbUXI7E5l";
     NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/yohc/9kWa0cfmMo1DTGM4rUmRyZ7WcKyhJZZNH8tiFY9i32FGMN8x4QT2hr2iiPfzizRkGfYoG+++9wAAWHhobu2cZ+dIcBTwayDFY4OJo6k592YFbyDa9mwuirgb0fRGtWY3WzvI5oaigZnv9EFjRVdr1omLk10azYNcwQIDAQAB";
     
@@ -196,7 +196,15 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     NSError *error = nil;
     //当前是否可以显示广告
     if([manager hasPreloadAD]) {
-        [manager playAD:self options:nil error:&error];
+    //options可以传入播放的参数：
+    /*
+     *  CentrixlinkPlayAdOptionKeyUser: 用户ID
+     *  CentrixlinkPlayAdOptionKeyIECAutoClose： endcard是否点击后自动关闭，如不自动关闭，则可以多次点击。(default:YES)
+     *  CentrixlinkPlayAdOptionKeyExtra1： 其它扩展参数
+     *  其它参数可参考CentrixlinkConst.h定义。
+     * 
+    */
+        [manager playAD:self options:@{CentrixlinkPlayAdOptionKeyUser:@"test_userId", CentrixlinkPlayAdOptionKeyExtra1:@"Extra1",CentrixlinkPlayAdOptionKeyIECAutoClose:@(YES)} error:&error];
         if (error) {
             //处理错误
             NSLog(@"%@", error);
@@ -205,17 +213,6 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
         NSLog(@"当前无有效的预加载视频广告");
     }
   }
-```
-
-#### 3.4 设置视频广告显示方向是否跟随应用方向
-
-```objc
-/**
- 设置视频广告显示方向是否跟随应用方向(YES:跟随应用方向、NO:不跟随)
-
- @param enable default = NO;
- */
-- (void)setEnableFollowAppOrientation:(BOOL)enable;
 ```
 
 ### 4 开屏图片广告相关接口
@@ -298,3 +295,5 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 }
 
 ```
+
+

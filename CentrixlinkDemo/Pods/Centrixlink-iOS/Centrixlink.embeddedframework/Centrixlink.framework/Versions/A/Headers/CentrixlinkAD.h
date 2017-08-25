@@ -46,9 +46,9 @@ typedef void (^CentrixLinkADDebugCallBack)(NSString *message, CLSLogLevel level)
 
 
 /**
- 设置播放广告的方向
+ 设置视频广告的展示方向
 
- @param orientation 应用方向(UIInterfaceOrientationMaskPortrait / UIInterfaceOrientationMaskLandscape / UIInterfaceOrientationMaskAll = default)
+ @param orientation 视频广告展示方向(UIInterfaceOrientationMaskPortrait / UIInterfaceOrientationMaskLandscape / UIInterfaceOrientationMaskAll = default)
  */
 - (void)setPlayAdOrientation:(UIInterfaceOrientationMask)orientation;
 

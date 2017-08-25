@@ -28,7 +28,6 @@ UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra7;
 UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra8;
 
 
-
 UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_TOP;
 
 UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_LEFT;
@@ -71,36 +70,17 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 
 UIKIT_EXTERN NSString *const ADInfoKEYIsSkip;
 
-
 /**
  *  用于是否插屏广告显示开关
  */
 UIKIT_EXTERN NSString *const ShowADOptionKeyRESIZEVIDEOAD;
-/**
- *  支持广告的方向
- */
-UIKIT_EXTERN NSString *const ShowADOptionKeyOrientations;
-/**
- *  当前App 用户ID，用于激励广告
- */
-UIKIT_EXTERN NSString *const ShowADOptionKeyUser;
+
 
 /**
  *  只播放预加载广告
  */
 UIKIT_EXTERN NSString *const ShowADOptionKeyOnlyPreload;
 
-
-/**
- * 自动关闭EndCard页面，true 为广告自动关闭，false为手动关闭
- */
-UIKIT_EXTERN NSString *const ShowADOptionKeyAutoCloseADView;
-
-
-/**
- *  当前广告标识，用于激励广告
- */
-UIKIT_EXTERN NSString *const ShowADOptionKeyPlacement;
 
 /**
  *  插屏广告显示的位置

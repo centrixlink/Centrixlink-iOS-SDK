@@ -49,10 +49,13 @@ const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/
         [[NSUserDefaults standardUserDefaults] setObject:Default_App_Key forKey:App_Key];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-//    [[CentrixlinkAD sharedInstance] startWithAppID:appId AppSecretKey:appKey error:nil];
+    
+    [[CentrixlinkAD sharedInstance] setPlayAdOrientation:UIInterfaceOrientationMaskAll];
+    
+    [[CentrixlinkAD sharedInstance] startWithAppID:appId AppSecretKey:appKey error:nil];
     
     
-     [[CentrixlinkAD sharedInstance] startWithAppID:@"LOiOVdECek" AppSecretKey:@"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjqVDkRDbYYa22ThDCSMBSwCh8JuoEO7Y6VI+CTd/xuc/NmNVYNKseDYIoYiCv3yw2cYG5Ev4O7to50ISJXBUSaXdg9BDEjbeYZhjWgmww9bnJH18FRadaHYHaq7POVVSAUxjgeg/ErpE44V7A65lK2/iUyoEllRXmXfODQ01a4wIDAQAB" error:nil];
+    
     
     if (error) {
         NSLog(@"startWithAppID Error %@",error);
