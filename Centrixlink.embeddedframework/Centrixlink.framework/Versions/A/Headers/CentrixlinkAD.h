@@ -12,9 +12,11 @@
 #import "CentrixlinkProtocol.h"
 #import "CLSLog.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class UIViewController;
+
 
 typedef void (^CentrixLinkADDebugCallBack)(NSString *message, CLSLogLevel level);
 
@@ -23,8 +25,6 @@ typedef void (^CentrixLinkADDebugCallBack)(NSString *message, CLSLogLevel level)
 @property (nonatomic, weak) id<CentrixLinkADDelegate>delegate;
 
 @property (nonatomic, weak) id<CentrixLinkSplashADDelegate>splashADdelegate;
-
-
 
 
 /**

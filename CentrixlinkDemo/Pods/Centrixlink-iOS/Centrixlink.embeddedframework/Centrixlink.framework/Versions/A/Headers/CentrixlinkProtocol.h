@@ -10,11 +10,6 @@
 @class CentrixlinkADItem;
 
 
-
-
-
-
-
 #pragma mark - CentrixLinkADDelegate
 
 @protocol CentrixLinkADDelegate <NSObject>

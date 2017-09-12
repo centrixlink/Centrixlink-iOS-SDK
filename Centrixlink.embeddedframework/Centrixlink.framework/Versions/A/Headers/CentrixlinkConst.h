@@ -11,6 +11,13 @@
 
 @interface CentrixlinkConst : NSObject
 
+
+
+UIKIT_EXTERN NSString *const CentrixlinkAdapterInitPreloadRes;
+UIKIT_EXTERN NSString *const CentrixlinkAdapterPreloadFinished;
+
+
+
 /**
  *  扩展信息
  */
@@ -26,6 +33,7 @@ UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra5;
 UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra6;
 UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra7;
 UIKIT_EXTERN NSString *const CentrixlinkPlayAdOptionKeyExtra8;
+
 
 
 UIKIT_EXTERN NSString *const K_AD_RESIZEVIDEO_TOP;
