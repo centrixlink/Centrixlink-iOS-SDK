@@ -1,4 +1,4 @@
-****# CHANGELOG
+# CHANGELOG
 
 #### 2.4.2-20171020
 * 支持AdMob adapter
