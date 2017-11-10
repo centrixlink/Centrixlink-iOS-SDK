@@ -13,7 +13,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-    pod 'Centrixlink-iOS', '~> 2.4.0'
+    pod 'Centrixlink-iOS', '~> 2.4.1'
 end
 ```
 
@@ -65,11 +65,15 @@ end
 ```objc
 - (BOOL)application:(UIApplication *)application 
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-   //开启debug
+    //开启debug
     [[CentrixlinkAD sharedInstance] setDebugEnable:YES]; 
+
+    //设置视频广告的展示方向(在调用startWithAppID:AppSecretKey:error:方法前调用该方法)
+    //orientation: 视频广告展示方向(UIInterfaceOrientationMaskPortrait / UIInterfaceOrientationMaskLandscape / UIInterfaceOrientationMaskAll = default)
+    [[CentrixlinkAD sharedInstance] setPlayAdOrientation:UIInterfaceOrientationMaskAll];
+
     //激活SDK
     NSError *error;
-    
     NSString *  Default_App_ID = @"ECbUXI7E5l";
     NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/yohc/9kWa0cfmMo1DTGM4rUmRyZ7WcKyhJZZNH8tiFY9i32FGMN8x4QT2hr2iiPfzizRkGfYoG+++9wAAWHhobu2cZ+dIcBTwayDFY4OJo6k592YFbyDa9mwuirgb0fRGtWY3WzvI5oaigZnv9EFjRVdr1omLk10azYNcwQIDAQAB";
     
@@ -192,7 +196,15 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     NSError *error = nil;
     //当前是否可以显示广告
     if([manager hasPreloadAD]) {
-        [manager playAD:self options:nil error:&error];
+    //options可以传入播放的参数：
+    /*
+     *  CentrixlinkPlayAdOptionKeyUser: 用户ID
+     *  CentrixlinkPlayAdOptionKeyIECAutoClose： endcard是否点击后自动关闭，如不自动关闭，则可以多次点击。(default:YES)
+     *  CentrixlinkPlayAdOptionKeyExtra1： 其它扩展参数
+     *  其它参数可参考CentrixlinkConst.h定义。
+     * 
+    */
+        [manager playAD:self options:@{CentrixlinkPlayAdOptionKeyUser:@"test_userId", CentrixlinkPlayAdOptionKeyExtra1:@"Extra1",CentrixlinkPlayAdOptionKeyIECAutoClose:@(YES)} error:&error];
         if (error) {
             //处理错误
             NSLog(@"%@", error);
@@ -201,68 +213,6 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
         NSLog(@"当前无有效的预加载视频广告");
     }
   }
-```
-#### 3.4 非全屏视频广告位置自定义
-
-```objc
-/*
-    当使用非全屏视频广告功能并自定义位置时可以在参数options中加入自定义的位置信息：
-*/
-
-//其中0.2、0.2、0.8分别表示距离上边距20%、左边距20%、最短边所占比例80%(最短边表示在竖屏模式下视频播放窗口宽度占屏幕宽的比例，横屏模式下视频播放窗口高度占屏幕高的比例)。
-NSDictionary *positionDict = @{
-                                K_AD_INTERSTITIAL_TOP:@(0.2),
-                                K_AD_INTERSTITIAL_LEFT:@(0.2),
-                                K_AD_INTERSTITIAL_VIDEOSCALE:@(0.8)
-                            };
-
-CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
-//option:参数为NSDictionary,方便以后扩展参数。如果不穿options=nil,则非全屏视频广告为默认居中显示
-[manager playUnFullScreenAD:self options:@{ADRESIZEVIDEOPosition:positionDict} error:&error];
-if (error) {
-    NSLog(@"%@",error);            
-}
-
-```
-#### 3.5 修改非全屏视频广告位置
-```objc
-/**
- 调整非全屏视频广告的布局
- (注意：所有参数均为百分比
-       top\left取值范围:[0 1)
-       videoScale取值范围:(0 1]
-
- @param top 上边距
- @param left 左边距
- @param videoScale 短边占比(例如：在竖屏模式下，指的是视频播放窗口宽度占屏幕宽的比例，反之横屏模式下就是视频播放窗口高度占屏幕高的比例)
- */
-- (BOOL)resizeADWithTop:(float)top left:(float)left videoScale:(float)videoScale;
-
-//可以通过该接口修改非全屏视频广告广告的位置信息，例如可以在监听手机转屏的方法中修改横屏和竖屏模式下非全屏展示的位置和比例。
-- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
-    [coordinator animateAlongsideTransition:^(id <UIViewControllerTransitionCoordinatorContext> context) {
-        if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
-            //横屏
-            [[CentrixlinkAD sharedInstance] resizeADWithTop:0 left:0 videoScale:1];
-        }else {
-            //竖屏
-            [[CentrixlinkAD sharedInstance] resizeADWithTop:0.2 left:0.2 videoScale:0.8];
-        }
-    } completion:nil];
-}
-
-```
-
-#### 3.6 设置视频广告显示方向是否跟随应用方向
-
-```objc
-/**
- 设置视频广告显示方向是否跟随应用方向(YES:跟随应用方向、NO:不跟随)
-
- @param enable default = NO;
- */
-- (void)setEnableFollowAppOrientation:(BOOL)enable;
 ```
 
 ### 4 开屏图片广告相关接口

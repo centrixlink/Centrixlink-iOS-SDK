@@ -40,10 +40,9 @@ typedef void (^CentrixLinkADDebugCallBack)(NSString *message, CLSLogLevel level)
 /**
  *  是否有效的预加载广告
  *
- *  @return true 有预加载广告，false 暂无预加载广告
+ *  @return true 有可播放预加载广告，false 暂无可播放预加载广告
  */
-- (BOOL)hasPreloadAD;
-
+- (BOOL)isAdPlayable;
 
 /**
  设置视频广告的展示方向

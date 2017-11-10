@@ -22,8 +22,8 @@ const NSString *  App_ID = @"CL_APP_ID";
 const NSString * App_Key = @"CL_APP_KEY";
 
 /* 实际开发中请使用自己申请的AppID 和 AppSecretKey */
-const NSString *  Default_App_ID = @"ECbUXI7E5l";
-const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/yohc/9kWa0cfmMo1DTGM4rUmRyZ7WcKyhJZZNH8tiFY9i32FGMN8x4QT2hr2iiPfzizRkGfYoG+++9wAAWHhobu2cZ+dIcBTwayDFY4OJo6k592YFbyDa9mwuirgb0fRGtWY3WzvI5oaigZnv9EFjRVdr1omLk10azYNcwQIDAQAB";
+const NSString *  Default_App_ID = @"rlwheNZWPW";
+const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD0RkYaYXO6oDPHmvIylxpndAE05LKDI1UU/MxoJr8gxmUu/C+5neRopMxLFqpVvqHvNWU7+SoC0mf2i3x88Dtwojl69+pi6HUXeBIqLhg2XT8Oz3i9maA5IRGBsws7hiybDYylBp7bVm0oKKYS7ESsmfjM2C5paTD90BjbnmOrjwIDAQAB";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -53,17 +53,8 @@ const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/
     [[CentrixlinkAD sharedInstance] setPlayAdOrientation:UIInterfaceOrientationMaskAll];
     
     [[CentrixlinkAD sharedInstance] startWithAppID:appId AppSecretKey:appKey error:nil];
-    
-    
-    
-    
     if (error) {
         NSLog(@"startWithAppID Error %@",error);
-    }else {
-        [[CentrixlinkAD sharedInstance] setSplashADdelegate:self];
-        
-        [[CentrixlinkAD sharedInstance] playSplashAD];
-        
     }
     
     vc = (ViewController *) [self.window rootViewController];
@@ -73,28 +64,6 @@ const NSString * Default_App_Key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq2c/
     return YES;
 }
 
-
-#pragma mark - CentrixLinkSplashADDelegate
-
-- (void)centrixlinkSplashADDidShow:(NSDictionary *)info {
-
-}
-
-- (void)centrixlinkSplashADClosed:(NSDictionary *)info {
-    NSLog(@"%@", info);
-}
-
-- (void)centrixlinkSplashADShowFail:(NSError *)error {
-
-}
-
-- (void)centrixlinkSplashADSkip:(NSDictionary *)info {
-    NSLog(@"%@", info);
-}
-
-- (void)centrixlinkSplashADAction:(NSDictionary *)info {
-    NSLog(@"%@", info);
-}
 
 
 

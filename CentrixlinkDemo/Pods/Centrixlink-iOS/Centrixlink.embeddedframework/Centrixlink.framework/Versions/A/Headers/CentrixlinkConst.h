@@ -119,7 +119,9 @@ UIKIT_EXTERN NSString *const VIDEO_EVENT_TABLE;
 /* SplashADEventTable */
 UIKIT_EXTERN NSString *const SPLASH_EVENT_TABLE;
 /* ADDownloadedTable */
-UIKIT_EXTERN NSString *const DOWNLOADED_AD_TABLE;
+//UIKIT_EXTERN NSString *const DOWNLOADED_AD_TABLE;
+/* New ADDownloadedTable */
+UIKIT_EXTERN NSString *const DOWNLOADED_AD_NEW_TABLE;
 /* ADFileTable */
 UIKIT_EXTERN NSString *const DOWNLOADED_FILE_TABLE;
 /* BuryingPointTable */
@@ -128,6 +130,7 @@ UIKIT_EXTERN NSString *const BURYINGPOINT_TABLE;
 UIKIT_EXTERN NSString *const REQUEST_TABLE;
 /* trackingUrl */
 UIKIT_EXTERN NSString *const TRACKING_EVENT_TABLE;
+UIKIT_EXTERN NSString *const FAIL_EVENT_TABLE;
 
 
 @end

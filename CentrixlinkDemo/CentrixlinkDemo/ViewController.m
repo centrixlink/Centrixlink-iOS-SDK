@@ -58,12 +58,10 @@
 }
 
 #pragma mark ----CentrixlinkDelegate
-
-
-- (void)centrixLinkHasPreloadAD:(BOOL)hasPreload {
-    [self.interButton setEnabled:hasPreload];
-    [self.fullButton setEnabled:hasPreload];
-    NSString *message =  [ NSString stringWithFormat:@"Preload Status %@ ", hasPreload?@"hasPreload": @"No Preload"];
+- (void)centrixLinkAdPlayability:(BOOL)isAdPlayable {
+    [self.interButton setEnabled:isAdPlayable];
+    [self.fullButton setEnabled:isAdPlayable];
+    NSString *message =  [ NSString stringWithFormat:@"Preload Status %@ ", isAdPlayable?@"can play": @"No"];
 //    [self outputMessage:message];
     NSLog(@"%@", message);
 }
@@ -103,16 +101,12 @@
 }
 
 
-- (IBAction)localList:(id)sender {
-    
-}
-
 -(IBAction)ADClick:(id)sender
 {
     //当前是否可以显示广告
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error;
-    if([manager hasPreloadAD]) {
+    if([manager isAdPlayable]) {
         //manager.hasPreloadAD可预先判断是否有有效预加载广告
         [manager playAD:self options:nil error:&error];
         if (error) {
@@ -124,9 +118,6 @@
     }
 }
 
--(IBAction)interADClick:(id)sender {
-    
-}
 
 
 - (IBAction)userAppIdAction:(id)sender {

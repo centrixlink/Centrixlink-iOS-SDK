@@ -6,14 +6,14 @@ iOS7+ 版本
 ### 准备工作
 
 #### Cocoapods管理
-Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下代码并运行pod install命令即可。
+    Centrixlink iOS SDK可以通过Cocoapods工具自动操作完成。使用Cocoapods工具安装Centrixlink iOS SDK，只需在工程Podfile文件中添加以下代码并运行pod install命令即可。
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-    pod 'Centrixlink-iOS', '~> 2.4.1'
+    pod 'Centrixlink-iOS', '~> 2.5.0'
 end
 ```
 
@@ -23,15 +23,18 @@ end
 3.  添加以下依赖库:
  
 	```
-	   * AdSupport.framework
-	   * AVFoundation.framework
-	   * CFNetwork.framework
-	   * Foundation.framework
-	   * MediaPlayer.framework  
- 	   * Storekit.framework
-	   * CoreLocation.framework
-	   * SystemConfiguration.framework
 	   * UIKit.framework
+	   * AVFoundation.framework
+	   * Foundation.framework
+	   * CoreMedia.framework
+	   * CoreLocation.framework
+	   * CoreTelephony.framework
+	   * SystemConfiguration.framework  
+ 	   * Storekit.framework
+	   * MediaPlayer.framework
+	   * CFNetwork.framework
+	   * AdSupport.framework
+	   * ImageIO.framework
 	   * libz.dylib
 	   * libsqlite3.dylib
 	   * libstdc++.dylib
@@ -121,17 +124,16 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
 
 #pragma mark ----CentrixlinkDelegate
 
--(void)centrixLinkHasPreloadAD:(BOOL)hasPreload {
-    NSLog(@"视频预加载状态 %@",hasPreload? @"有预加载视频广告":@"无预加载视频广告");
+- (void)centrixLinkAdPlayability:(BOOL)isAdPlayable {
+    //返回是否有可播放广告
 }
+
 
 /**
  *    视频广告即将展示
  *
  *  @param ADInfo 视频广告信息
  */
- 
- 
 - (void)centrixLinkVideoADWillShow:(NSDictionary *)ADInfo {
     //广告资源ID
     NSString *adid = [ADInfo objectForKey:ADInfoKEYADID];
@@ -195,7 +197,7 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     CentrixlinkAD *manager = [CentrixlinkAD sharedInstance];
     NSError *error = nil;
     //当前是否可以显示广告
-    if([manager hasPreloadAD]) {
+    if([manager isAdPlayable]) {
     //options可以传入播放的参数：
     /*
      *  CentrixlinkPlayAdOptionKeyUser: 用户ID
@@ -214,86 +216,4 @@ UIKIT_EXTERN NSString *const ADInfoKEYIsClick;
     }
   }
 ```
-
-### 4 开屏图片广告相关接口
-
-#### 4.1 设置开屏图片广告代理委托及加载开屏图片广告
-
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //在激活SDK后，调用开屏。
-    
-    //设置开屏代理
-    [[CentrixlinkAD sharedInstance] setSplashADdelegate:self];
-    //显示开屏
-    [[CentrixlinkAD sharedInstance] playSplashAD];
-}
-
-```
-#### 4.2 跟踪开屏图片广告展示添加相关委托接口
-
-```objc
-/**
- 开屏广告关闭
-
- @param info
- */
-- (void)centrixlinkSplashADClosed:(NSDictionary *)info {
-    //广告资源ID
-    NSString *adid = [info objectForKey:ADInfoKEYADID];
-    //是否有点击事件
-    BOOL isClick = [[info objectForKey:ADInfoKEYIsClick] boolValue];
-    //是否跳过
-    BOOL isSkip = [[info objectForKey:ADInfoKEYIsSkip] boolValue];
-    //是否完整播放
-    BOOL isplayFinished = [info objectForKey:ADInfoKEYADPlayStatus];
-}
-
-
-/**
- 开屏广告显示成功
-
- @param info
- */
-- (void)centrixlinkSplashADDidShow:(NSDictionary *)info {
-    //广告资源ID
-    NSString *adid = [info objectForKey:ADInfoKEYADID];
-}
-
-
-/**
- 开屏广告跳过
-
- @param info
- */
-- (void)centrixlinkSplashADSkip:(NSDictionary *)info {
-    //广告资源ID
-    NSString *adid = [info objectForKey:ADInfoKEYADID];
-}
-
-
-/**
- 开屏广告触发了action事件
-
- @param info
- */
-- (void)centrixlinkSplashADAction:(NSDictionary *)info {
-    //广告资源ID
-    NSString *adid = [info objectForKey:ADInfoKEYADID];
-}
-
-
-/**
- 开屏广告显示失败
-
- @param error 不同的error code对于不同的错误信息
- */
-- (void)centrixlinkSplashADShowFail:(NSError *)error {
-    /*  Error Code
-        201 本地没有预加载的开屏广告
-    */
-}
-
-```
-
 

@@ -30,7 +30,7 @@
  *
  *  @param hasPreload YES:存在 NO:不存在
  */
-- (void)centrixLinkHasPreloadAD:(BOOL)hasPreload;
+- (void)centrixLinkAdPlayability:(BOOL)isAdPlayable;
 
 
 /**
