@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		41CA92B72837C50F7CA756DF /* Pods_CentrixlinkDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D11E1F6755D72ED35A259D6 /* Pods_CentrixlinkDemo.framework */; };
-		75D0F00F1FB5A2120074E6C7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0F00D1FB5A1FF0074E6C7 /* CoreTelephony.framework */; };
-		75D0F0101FB5A2160074E6C7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0F00E1FB5A2060074E6C7 /* ImageIO.framework */; };
-		75D0F0121FB5A2500074E6C7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0F0111FB5A2450074E6C7 /* CoreLocation.framework */; };
-		75D0F0141FB5A2640074E6C7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D0F0131FB5A25C0074E6C7 /* CoreMedia.framework */; };
 		A081D6031D5DC89C00864E01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6021D5DC89C00864E01 /* main.m */; };
 		A081D6061D5DC89C00864E01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6051D5DC89C00864E01 /* AppDelegate.m */; };
 		A081D6091D5DC89C00864E01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A081D6081D5DC89C00864E01 /* ViewController.m */; };
@@ -46,10 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75D0F0141FB5A2640074E6C7 /* CoreMedia.framework in Frameworks */,
-				75D0F0121FB5A2500074E6C7 /* CoreLocation.framework in Frameworks */,
-				75D0F0101FB5A2160074E6C7 /* ImageIO.framework in Frameworks */,
-				75D0F00F1FB5A2120074E6C7 /* CoreTelephony.framework in Frameworks */,
 				41CA92B72837C50F7CA756DF /* Pods_CentrixlinkDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
