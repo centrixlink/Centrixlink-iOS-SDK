@@ -45,6 +45,7 @@
     }
     
     
+    NSLog(@"Start SDK %@", [CentrixlinkAD SDKVersion]);
     [[CentrixlinkAD sharedInstance] setDelegate:self];
     
     [[CentrixlinkAD sharedInstance] setDebugCallBack:^(NSString *message, CLSLogLevel level) {
