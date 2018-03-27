@@ -13,7 +13,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
 
 target 'TargetName' do
-    pod 'Centrixlink-iOS', '~> 2.5.0'
+    pod 'Centrixlink-iOS', '~> 2.5.3'
 end
 ```
 
