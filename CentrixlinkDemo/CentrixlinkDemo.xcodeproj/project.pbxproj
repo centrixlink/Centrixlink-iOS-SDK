@@ -147,7 +147,7 @@
 				TargetAttributes = {
 					A081D5FD1D5DC89C00864E01 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = UMTQRVZKTV;
+						DevelopmentTeam = 8YD88B7CYW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -357,7 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UMTQRVZKTV;
+				DEVELOPMENT_TEAM = 8YD88B7CYW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentrixlinkDemo/Centrixlink.embeddedframework",
@@ -379,7 +379,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = UMTQRVZKTV;
+				DEVELOPMENT_TEAM = 8YD88B7CYW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentrixlinkDemo/Centrixlink.embeddedframework",
