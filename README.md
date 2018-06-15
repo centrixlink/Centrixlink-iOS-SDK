@@ -20,7 +20,7 @@ end
 #### 手动操作
 1.  从官网下载[Centrixlink_iOS_SDK](https://github.com/centrixlink/Centrixlink-iOS-SDK)文件。
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework/Cntrixlink.framework)，并添加到XCode项目中。
-3.  添加CentrixlinkRTB/Assets/CLRTBBundle.bundle到Xcode项目中。
+3.  添加Resources/CLBundle.bundle到Xcode项目中。
 4.  添加以下依赖库:
  
 	```
