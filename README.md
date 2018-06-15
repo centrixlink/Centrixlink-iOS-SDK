@@ -20,7 +20,8 @@ end
 #### 手动操作
 1.  从官网下载[Centrixlink_iOS_SDK](https://github.com/centrixlink/Centrixlink-iOS-SDK)文件。
 2.  解压缩Centrixlink框架(Centrixlink.embeddedframework/Cntrixlink.framework)，并添加到XCode项目中。
-3.  添加以下依赖库:
+3.  添加CentrixlinkRTB/Assets/CLRTBBundle.bundle到Xcode项目中。
+4.  添加以下依赖库:
  
 	```
 	   * UIKit.framework
@@ -39,16 +40,16 @@ end
 	   * libsqlite3.dylib
 	   * libstdc++.dylib
 	```
-4.  添加编译参数
+5.  添加编译参数
 
    > 在Xcode中选择项目的Targets->Build Settings，配置Other Link Flags 增加 -ObjC -all_load
  
-5. 状态栏控制设置
+6. 状态栏控制设置
 
  > 打开项目的Info.plist，增加 "View controller-based status bar appearance" 选项，并设置为 "No".
    
    
-6. 申请：[App ID、App Key](https://dashboard.centrixlink.com/login)
+7. 申请：[App ID、App Key](https://dashboard.centrixlink.com/login)
 
 ## 集成说明
 
