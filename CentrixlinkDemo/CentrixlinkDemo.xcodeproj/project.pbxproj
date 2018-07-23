@@ -360,7 +360,7 @@
 				INFOPLIST_FILE = CentrixlinkDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.centrixlink.255-github-07231035";
+				PRODUCT_BUNDLE_IDENTIFIER = com.centrixlink.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -382,7 +382,7 @@
 				INFOPLIST_FILE = CentrixlinkDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.centrixlink.255-github-07231035";
+				PRODUCT_BUNDLE_IDENTIFIER = com.centrixlink.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
