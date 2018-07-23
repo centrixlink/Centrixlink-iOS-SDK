@@ -1,12 +1,16 @@
 PODS:
-  - Centrixlink-iOS (2.5.1)
+  - Centrixlink-iOS (2.5.5)
 
 DEPENDENCIES:
-  - Centrixlink-iOS (= 2.5.1)
+  - Centrixlink-iOS (from `../`)
+
+EXTERNAL SOURCES:
+  Centrixlink-iOS:
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Centrixlink-iOS: d27c9aac218b8b1222c66a205fcbba06828ec342
+  Centrixlink-iOS: 0196cd4018005e79c2bcfe35b86acf261c385307
 
-PODFILE CHECKSUM: d6c3dc2ea806721211bfbcf0c48b2f8f6d2a1d86
+PODFILE CHECKSUM: e9933fab410a9e90600b6e2d0090a515f4caa3ac
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.2
