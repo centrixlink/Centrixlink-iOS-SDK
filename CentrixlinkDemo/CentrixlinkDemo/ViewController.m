@@ -30,8 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIAlertView *al = [[UIAlertView alloc] initWithTitle:[CentrixlinkAD SDKVersion] message:nil delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-    [al show];
     // Do any additional setup after loading the view, typically from a nib.
     
     [self.interButton setEnabled:NO];
